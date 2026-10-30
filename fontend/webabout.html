@@ -1,0 +1,1187 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About ER Snacks &amp; Catering</title>
+    <meta name="description"
+        content="Meet the people behind ER Snacks & Catering and learn how we make fresh, homemade food for our community.">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700;800;900&family=Plus+Jakarta+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400&family=Playfair+Display:ital,wght@0,400..900;1,400..900&display=swap"
+        rel="stylesheet">
+
+    <script src="https://unpkg.com/lucide@latest"></script>
+
+    <style>
+        :root {
+            --font-display: 'Cinzel', serif;
+            --font-serif: 'Playfair Display', Georgia, serif;
+            --font-body: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, sans-serif;
+            --bg-primary: #eed9bb;
+            --bg-surface: #fff1df;
+            --bg-surface-elevated: #ffffff;
+            --bg-glass: rgba(255, 250, 243, 0.94);
+            --border-glass: rgba(111, 78, 55, 0.16);
+            --border-gold: rgba(193, 91, 44, 0.35);
+            --text-primary: #3b2922;
+            --text-secondary: #6f5a4f;
+            --text-muted: #927d70;
+            --gold-base: #c15b2c;
+            --gold-light: #f5e6a8;
+            --gold-dark: #aa820a;
+            --gold-gradient: linear-gradient(135deg, #d97843 0%, #c15b2c 100%);
+            --gold-glow: rgba(193, 91, 44, 0.2);
+            --accent-emerald: #5d8a62;
+            --shadow-subtle: 0 8px 24px -10px rgba(91, 53, 33, 0.22);
+            --shadow-glow: 0 0 30px rgba(193, 91, 44, 0.12);
+            --shadow-card: 0 14px 28px -15px rgba(91, 53, 33, 0.28);
+            --radius-sm: 8px;
+            --radius-md: 14px;
+            --radius-lg: 24px;
+            --radius-full: 9999px;
+            --transition-smooth: all 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+
+
+
+        *,
+        *::before,
+        *::after {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            -webkit-tap-highlight-color: transparent;
+        }
+
+        html {
+            scroll-behavior: smooth;
+            font-size: 16px;
+        }
+
+        body {
+            font-family: var(--font-body);
+            background-color: var(--bg-primary);
+            color: var(--text-primary);
+            line-height: 1.6;
+            overflow-x: hidden;
+            transition: background-color 0.4s ease, color 0.4s ease;
+        }
+
+        ::selection {
+            background-color: var(--gold-base);
+            color: #000;
+        }
+
+        #scroll-progress {
+            position: fixed;
+            top: 0;
+            left: 0;
+            height: 3px;
+            background: var(--gold-gradient);
+            z-index: 2000;
+            width: 0%;
+            transition: width 0.1s ease-out;
+            box-shadow: 0 0 10px var(--gold-base);
+        }
+
+        .container {
+            max-width: 1280px;
+            margin: 0 auto;
+            padding: 0 1.5rem;
+        }
+
+        .section {
+            padding: 5.5rem 0;
+            position: relative;
+        }
+
+        .section-tag {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            font-family: var(--font-display);
+            font-size: 0.8rem;
+            font-weight: 700;
+            letter-spacing: 3px;
+            text-transform: uppercase;
+            color: var(--gold-base);
+            padding: 0.35rem 1rem;
+            background: rgba(212, 175, 55, 0.08);
+            border: 1px solid var(--border-gold);
+            border-radius: var(--radius-full);
+            margin-bottom: 1.25rem;
+        }
+
+        .section-title {
+            font-family: var(--font-serif);
+            font-size: clamp(2.2rem, 4.5vw, 3.3rem);
+            font-weight: 700;
+            line-height: 1.2;
+            margin-bottom: 1.25rem;
+            color: var(--text-primary);
+        }
+
+        .section-subtitle {
+            color: var(--text-secondary);
+            font-size: clamp(1rem, 1.8vw, 1.15rem);
+            max-width: 650px;
+            margin-bottom: 3rem;
+        }
+
+        .gold-gradient-text {
+            background: var(--gold-gradient);
+            -webkit-background-clip: text;
+            background-clip: text;
+            -webkit-text-fill-color: transparent;
+            display: inline-block;
+        }
+
+        .navbar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            z-index: 1500;
+            transition: var(--transition-smooth);
+            padding: 1.25rem 0;
+        }
+
+        .navbar.scrolled {
+            background: var(--bg-glass);
+            backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px);
+            padding: 0.85rem 0;
+            border-bottom: 1px solid var(--border-glass);
+            box-shadow: var(--shadow-subtle);
+        }
+
+        .nav-inner {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .brand {
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+            text-decoration: none;
+            color: var(--text-primary);
+        }
+
+        .brand-logo-icon {
+            width: 38px;
+            height: 38px;
+            background: var(--gold-gradient);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #000;
+            font-weight: 900;
+            font-family: var(--font-display);
+            font-size: 1.1rem;
+            box-shadow: var(--shadow-glow);
+        }
+
+        .brand-name {
+            font-family: var(--font-display);
+            font-size: 1.25rem;
+            font-weight: 700;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+        }
+
+        .nav-links {
+            display: flex;
+            align-items: center;
+            list-style: none;
+            gap: 2rem;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: var(--text-secondary);
+            font-size: 0.9rem;
+            font-weight: 600;
+            letter-spacing: 1.5px;
+            text-transform: uppercase;
+            transition: var(--transition-smooth);
+            position: relative;
+            padding: 0.35rem 0;
+        }
+
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: var(--gold-base);
+            transition: var(--transition-smooth);
+        }
+
+        .nav-links a:hover,
+        .nav-links a.active {
+            color: var(--gold-base);
+        }
+
+        .nav-links a:hover::after,
+        .nav-links a.active::after {
+            width: 100%;
+        }
+
+        .nav-actions {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.6rem;
+            font-family: var(--font-body);
+            font-size: 0.88rem;
+            font-weight: 700;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            padding: 0.75rem 1.6rem;
+            border-radius: var(--radius-full);
+            text-decoration: none;
+            cursor: pointer;
+            transition: var(--transition-smooth);
+            border: none;
+        }
+
+        .btn-gold {
+            background: var(--gold-gradient);
+            color: #000;
+            box-shadow: 0 4px 18px rgba(212, 175, 55, 0.35);
+        }
+
+        .btn-gold:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 25px rgba(212, 175, 55, 0.5);
+        }
+
+        .btn-outline {
+            background: transparent;
+            color: white;
+            border: 1px solid var(--border-gold);
+        }
+
+        .btn-outline:hover {
+            background: rgba(212, 175, 55, 0.1);
+            border-color: var(--gold-base);
+            color: var(--gold-base);
+            transform: translateY(-2px);
+        }
+
+        .nav-toggle-btn {
+            display: none;
+            background: var(--bg-surface-elevated);
+            border: 1px solid var(--border-glass);
+            color: var(--text-primary);
+            width: 42px;
+            height: 42px;
+            border-radius: var(--radius-sm);
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+        }
+
+        .page-hero {
+            padding-top: 10rem;
+            padding-bottom: 4rem;
+            position: relative;
+            text-align: center;
+            background: radial-gradient(circle at 50% 30%, rgba(212, 175, 55, 0.08) 0%, transparent 65%);
+        }
+
+        .page-hero-title {
+            font-family: var(--font-serif);
+            font-size: clamp(2.5rem, 6vw, 4.2rem);
+            font-weight: 700;
+            line-height: 1.15;
+            margin-bottom: 1.25rem;
+        }
+
+        .page-hero-desc {
+            color: var(--text-secondary);
+            font-size: 1.15rem;
+            max-width: 720px;
+            margin: 0 auto;
+            line-height: 1.8;
+        }
+
+        .about-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4.5rem;
+            align-items: center;
+        }
+
+        .about-image-wrapper {
+            position: relative;
+            border-radius: var(--radius-lg);
+            perspective: 1000px;
+        }
+
+        .about-card-3d {
+            position: relative;
+            border-radius: var(--radius-lg);
+            overflow: hidden;
+            box-shadow: var(--shadow-card);
+            border: 1px solid var(--border-gold);
+            transition: transform 0.4s ease, box-shadow 0.4s ease;
+        }
+
+        .about-card-3d img {
+            width: 100%;
+            height: 520px;
+            object-fit: cover;
+            display: block;
+            transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+
+        .about-card-3d:hover img {
+            transform: scale(1.04);
+        }
+
+        .floating-badge {
+            position: absolute;
+            background: var(--bg-glass);
+            backdrop-filter: blur(14px);
+            -webkit-backdrop-filter: blur(14px);
+            border: 1px solid var(--border-gold);
+            padding: 1rem 1.4rem;
+            border-radius: var(--radius-md);
+            box-shadow: var(--shadow-subtle);
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            z-index: 10;
+        }
+
+        .badge-top-right {
+            top: -20px;
+            right: -20px;
+        }
+
+        .badge-bottom-left {
+            bottom: -20px;
+            left: -20px;
+        }
+
+        .badge-icon {
+            width: 44px;
+            height: 44px;
+            border-radius: 50%;
+            background: rgba(212, 175, 55, 0.15);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--gold-base);
+        }
+
+        .badge-text strong {
+            display: block;
+            font-family: var(--font-display);
+            font-size: 1.1rem;
+            color: var(--gold-base);
+        }
+
+        .badge-text span {
+            font-size: 0.82rem;
+            color: var(--text-secondary);
+        }
+
+        .about-text-content h2 {
+            font-family: var(--font-serif);
+            font-size: clamp(2rem, 3.5vw, 2.8rem);
+            margin-bottom: 1.5rem;
+            line-height: 1.25;
+        }
+
+        .about-text-content p {
+            color: var(--text-secondary);
+            font-size: 1.05rem;
+            line-height: 1.85;
+            margin-bottom: 1.5rem;
+        }
+
+        .about-stats-row {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 1.5rem;
+            margin-top: 2.5rem;
+            padding-top: 2rem;
+            border-top: 1px solid var(--border-glass);
+        }
+
+        .about-stat strong {
+            display: block;
+            font-family: var(--font-display);
+            font-size: 2rem;
+            color: var(--gold-base);
+        }
+
+        .about-stat span {
+            font-size: 0.85rem;
+            color: var(--text-muted);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .pillars-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(270px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        .pillar-card {
+            background: var(--bg-surface);
+            border: 1px solid var(--border-glass);
+            border-radius: var(--radius-lg);
+            padding: 2.5rem 2rem;
+            transition: var(--transition-smooth);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .pillar-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 3px;
+            background: var(--gold-gradient);
+            opacity: 0;
+            transition: var(--transition-smooth);
+        }
+
+        .pillar-card:hover {
+            transform: translateY(-8px);
+            border-color: var(--border-gold);
+            box-shadow: var(--shadow-card);
+        }
+
+        .pillar-card:hover::before {
+            opacity: 1;
+        }
+
+        .pillar-icon {
+            width: 58px;
+            height: 58px;
+            border-radius: var(--radius-md);
+            background: rgba(212, 175, 55, 0.1);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--gold-base);
+            margin-bottom: 1.5rem;
+            border: 1px solid var(--border-gold);
+        }
+
+        .pillar-card h3 {
+            font-family: var(--font-serif);
+            font-size: 1.35rem;
+            margin-bottom: 0.9rem;
+            color: var(--text-primary);
+        }
+
+        .pillar-card p {
+            color: var(--text-secondary);
+            font-size: 0.95rem;
+            line-height: 1.7;
+        }
+
+        .timeline-section {
+            background: var(--bg-surface);
+            border-top: 1px solid var(--border-glass);
+            border-bottom: 1px solid var(--border-glass);
+        }
+
+        .timeline-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+            gap: 2rem;
+            margin-top: 3.5rem;
+            position: relative;
+        }
+
+        .timeline-card {
+            background: var(--bg-surface-elevated);
+            border: 1px solid var(--border-glass);
+            border-radius: var(--radius-md);
+            padding: 2rem;
+            position: relative;
+            transition: var(--transition-smooth);
+        }
+
+        .timeline-card:hover {
+            border-color: var(--gold-base);
+            transform: translateY(-5px);
+        }
+
+        .timeline-year {
+            font-family: var(--font-display);
+            font-size: 1.75rem;
+            font-weight: 800;
+            color: var(--gold-base);
+            margin-bottom: 0.75rem;
+            display: inline-block;
+        }
+
+        .timeline-card h4 {
+            font-family: var(--font-serif);
+            font-size: 1.15rem;
+            margin-bottom: 0.75rem;
+        }
+
+        .timeline-card p {
+            color: var(--text-secondary);
+            font-size: 0.9rem;
+            line-height: 1.6;
+        }
+
+        .chef-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2.5rem;
+            margin-top: 3.5rem;
+        }
+
+        .chef-card {
+            background: var(--bg-surface);
+            border: 1px solid var(--border-glass);
+            border-radius: var(--radius-lg);
+            overflow: hidden;
+            transition: var(--transition-smooth);
+            text-align: center;
+            padding-bottom: 2rem;
+        }
+
+        .chef-card:hover {
+            transform: translateY(-8px);
+            border-color: var(--border-gold);
+            box-shadow: var(--shadow-card);
+        }
+
+        .chef-avatar-wrapper {
+            height: 220px;
+            background: radial-gradient(circle at center, rgba(212, 175, 55, 0.15) 0%, var(--bg-surface-elevated) 70%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+        }
+
+        .chef-avatar-circle {
+            width: 120px;
+            height: 120px;
+            border-radius: 50%;
+            background: var(--bg-surface);
+            border: 2px solid var(--gold-base);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--gold-base);
+            box-shadow: var(--shadow-glow);
+        }
+
+        .chef-info {
+            padding: 1.5rem 1.75rem 0;
+        }
+
+        .chef-role {
+            display: inline-block;
+            font-family: var(--font-display);
+            font-size: 0.78rem;
+            font-weight: 700;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            color: var(--gold-base);
+            margin-bottom: 0.5rem;
+        }
+
+        .chef-name {
+            font-family: var(--font-serif);
+            font-size: 1.45rem;
+            margin-bottom: 0.75rem;
+        }
+
+        .chef-bio {
+            color: var(--text-secondary);
+            font-size: 0.92rem;
+            line-height: 1.65;
+        }
+
+        .cta-box {
+            background: linear-gradient(135deg, rgba(26, 29, 38, 0.9) 0%, rgba(18, 20, 26, 0.95) 100%);
+            border: 1px solid var(--border-gold);
+            border-radius: var(--radius-lg);
+            padding: 4rem 2.5rem;
+            text-align: center;
+            box-shadow: var(--shadow-card);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .cta-box::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 600px;
+            height: 300px;
+            background: radial-gradient(ellipse, rgba(212, 175, 55, 0.15) 0%, transparent 70%);
+            pointer-events: none;
+        }
+
+        .cta-box h2 {
+            font-family: var(--font-serif);
+            font-size: clamp(2rem, 4vw, 3rem);
+            margin-bottom: 1rem;
+        }
+
+        .cta-box p {
+            color: gold;
+            font-size: 1.1rem;
+            max-width: 650px;
+            margin: 0 auto 2.5rem;
+        }
+
+        footer {
+            background: var(--bg-surface);
+            border-top: 1px solid var(--border-glass);
+            padding: 5rem 0 2.5rem;
+            margin-top: 4rem;
+        }
+
+        .footer-grid {
+            display: grid;
+            grid-template-columns: 2fr 1fr 1fr 1.5fr;
+            gap: 3.5rem;
+            margin-bottom: 3.5rem;
+        }
+
+        .footer-title {
+            font-family: var(--font-display);
+            font-size: 1rem;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            color: var(--gold-base);
+            margin-bottom: 1.5rem;
+        }
+
+        .footer-links {
+            list-style: none;
+            display: flex;
+            flex-direction: column;
+            gap: 0.85rem;
+        }
+
+        .footer-links a {
+            color: var(--text-secondary);
+            text-decoration: none;
+            font-size: 0.95rem;
+            transition: var(--transition-smooth);
+        }
+
+        .footer-links a:hover {
+            color: var(--gold-base);
+            padding-left: 5px;
+        }
+
+        .footer-bottom {
+            padding-top: 2rem;
+            border-top: 1px solid var(--border-glass);
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            color: var(--text-muted);
+            font-size: 0.88rem;
+        }
+
+        .back-to-top {
+            position: fixed;
+            bottom: 2rem;
+            right: 2rem;
+            width: 48px;
+            height: 48px;
+            border-radius: 50%;
+            background: var(--bg-surface-elevated);
+            border: 1px solid var(--border-gold);
+            color: var(--gold-base);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            opacity: 0;
+            visibility: hidden;
+            transition: var(--transition-smooth);
+            z-index: 900;
+        }
+
+        .back-to-top.visible {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        .back-to-top:hover {
+            background: var(--gold-base);
+            color: #000;
+            transform: translateY(-3px);
+        }
+
+        .reveal {
+            opacity: 0;
+            transform: translateY(28px);
+            transition: opacity 0.6s ease, transform 0.6s ease;
+        }
+
+        .reveal.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        @media (max-width: 1024px) {
+            .about-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .badge-top-right,
+            .badge-bottom-left {
+                display: none;
+            }
+
+            .footer-grid {
+                grid-template-columns: 1fr 1fr;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .nav-toggle-btn {
+                display: flex;
+            }
+
+            .nav-actions .btn-gold {
+                display: none;
+            }
+
+            .nav-links {
+                position: fixed;
+                top: 0;
+                right: -100%;
+                width: 82%;
+                max-width: 320px;
+                height: 100vh;
+                background: var(--bg-surface);
+                flex-direction: column;
+                justify-content: center;
+                gap: 2.5rem;
+                padding: 2.5rem 2rem;
+                transition: right 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+                box-shadow: -10px 0 40px rgba(0, 0, 0, 0.4);
+                border-left: 1px solid var(--border-glass);
+                z-index: 1400;
+                list-style: none;
+            }
+
+            .nav-links.open {
+                right: 0;
+            }
+
+            .nav-links a {
+                font-size: 1rem;
+                letter-spacing: 1px;
+            }
+
+            .about-stats-row {
+                grid-template-columns: 1fr 1fr;
+                gap: 1.25rem;
+            }
+
+            .chef-grid {
+                grid-template-columns: 1fr;
+                gap: 1.5rem;
+            }
+
+            .pillars-grid {
+                grid-template-columns: 1fr;
+                gap: 1.25rem;
+            }
+
+            .about-grid {
+                grid-template-columns: 1fr;
+                gap: 2rem;
+            }
+
+            .cta-box {
+                padding: 3rem 1.5rem;
+            }
+
+            .cta-box h2 {
+                font-size: clamp(1.8rem, 6vw, 2.5rem);
+            }
+
+            .footer-grid {
+                grid-template-columns: 1fr;
+                gap: 2rem;
+            }
+
+            .footer-bottom {
+                flex-direction: column;
+                gap: 1rem;
+                text-align: center;
+            }
+
+            .section {
+                padding: 3.5rem 0;
+            }
+
+            .section-title {
+                font-size: clamp(1.8rem, 7vw, 2.5rem);
+            }
+
+            .page-hero-title {
+                font-size: clamp(2rem, 8vw, 3rem);
+            }
+        }
+
+        @media (max-width: 480px) {
+            html {
+                font-size: 15px;
+            }
+
+            .container {
+                padding: 0 1rem;
+            }
+
+            .section {
+                padding: 2.5rem 0;
+            }
+
+            .about-stats-row {
+                grid-template-columns: 1fr 1fr;
+                gap: 0.75rem;
+            }
+
+            .about-card-3d img {
+                aspect-ratio: 3/2;
+            }
+
+            .badge-top-right,
+            .badge-bottom-left {
+                display: none;
+            }
+
+            .cta-box {
+                padding: 2rem 1rem;
+            }
+
+            .section-tag {
+                font-size: 0.72rem;
+                padding: 0.3rem 0.8rem;
+            }
+
+            .brand-name {
+                font-size: 1rem;
+            }
+
+            .btn {
+                padding: 0.7rem 1.4rem;
+                font-size: 0.85rem;
+            }
+
+            .footer-bottom {
+                font-size: 0.8rem;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div id="scroll-progress"></div>
+    <nav class="navbar" id="navbar">
+        <div class="container">
+            <div class="nav-inner">
+                <a href="webtask1.html" class="brand">
+                    <div class="brand-logo-icon">E</div>
+                    <span class="brand-name">ER Snacks &amp; Catering</span>
+                </a>
+                <ul class="nav-links">
+                    <li><a href="webtask1.html">Home</a></li>
+                    <li><a href="webmenu.html">Menu</a></li>
+                    <li><a href="webabout.html" class="active">About</a></li>
+                    <li><a href="webcon.html">Contact</a></li>
+                </ul>
+                <div class="nav-actions">
+
+                    <a href="webtask1.html#contact" class="btn btn-gold">
+                        <i data-lucide="calendar" width="16" height="16"></i>
+                        Reserve
+                    </a>
+                    <button class="nav-toggle-btn" id="navToggle">
+                        <i data-lucide="menu" width="24" height="24"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </nav>
+    <div class="page-hero">
+        <div class="container reveal">
+            <span class="section-tag">
+                <i data-lucide="book-open" width="14" height="14"></i>
+                Our Story
+            </span>
+            <h1 class="page-hero-title">Good food, made by <span class="gold-gradient-text">good people</span></h1>
+            <p class="page-hero-desc">
+                ER Snacks &amp; Catering is a small, friendly food business making fresh snacks and meals for families,
+                celebrations, and everyday cravings.
+            </p>
+        </div>
+    </div>
+
+    <section class="section">
+        <div class="container">
+            <div class="about-grid">
+                <div class="about-image-wrapper reveal">
+                    <div class="about-card-3d">
+                        <img src="../image/food.jpg" alt="Our founder and head chef" />
+                    </div>
+                    <div class="floating-badge badge-top-right">
+                        <div class="badge-icon">
+                            <i data-lucide="award" width="22" height="22"></i>
+                        </div>
+                        <div class="badge-text">
+                            <strong>Made fresh</strong>
+                            <span>With care every day</span>
+                        </div>
+                    </div>
+                    <div class="floating-badge badge-bottom-left">
+                        <div class="badge-icon">
+                            <i data-lucide="star" width="22" height="22"></i>
+                        </div>
+                        <div class="badge-text">
+                            <strong>Local</strong>
+                            <span>Made for our community</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="about-text-content reveal">
+                    <span class="section-tag">
+                        <i data-lucide="heart" width="14" height="14"></i>
+                        Where We Started
+                    </span>
+                    <h2>From our kitchen to <span class="gold-gradient-text">your table</span></h2>
+                    <p>
+                        ER Snacks began with a simple idea: make tasty food that feels homemade and is easy to share.
+                        Our team puts time and care into every batch, from the first preparation to the final packing.
+                    </p>
+                    <p>
+                        Today, we prepare snacks, meals, and catering orders for birthdays, family get-togethers,
+                        office lunches, and all the small moments that bring people together.
+                    </p>
+                    <p>
+                        We believe good service is personal: listen carefully, cook honestly, and make sure every guest
+                        leaves happy.
+                    </p>
+
+                    <div class="about-stats-row">
+                        <div class="about-stat">
+                            <strong>Fresh</strong>
+                            <span>Food every day</span>
+                        </div>
+                        <div class="about-stat">
+                            <strong>Local</strong>
+                            <span>Community first</span>
+                        </div>
+                        <div class="about-stat">
+                            <strong>100%</strong>
+                            <span>Made with care</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <section class="section" style="background: var(--bg-surface);">
+        <div class="container">
+            <div class="reveal" style="text-align:center;">
+                <span class="section-tag">
+                    <i data-lucide="columns" width="14" height="14"></i>
+                    What Matters To Us
+                </span>
+                <h2 class="section-title">Simple values, <span class="gold-gradient-text">honest food</span></h2>
+                <p class="section-subtitle" style="margin: 0 auto 1rem;">The things we keep in mind whenever we cook,
+                    pack, and serve.</p>
+            </div>
+
+            <div class="pillars-grid">
+                <div class="pillar-card reveal">
+                    <div class="pillar-icon">
+                        <i data-lucide="leaf" width="26" height="26"></i>
+                    </div>
+                    <h3>Fresh Ingredients</h3>
+                    <p>We choose fresh ingredients and prepare them carefully so every order tastes homemade.</p>
+                </div>
+                <div class="pillar-card reveal">
+                    <div class="pillar-icon">
+                        <i data-lucide="chef-hat" width="26" height="26"></i>
+                    </div>
+                    <h3>Food With Feeling</h3>
+                    <p>Our cooks bring experience, patience, and their own love of food to every recipe.</p>
+                </div>
+                <div class="pillar-card reveal">
+                    <div class="pillar-icon">
+                        <i data-lucide="sparkles" width="26" height="26"></i>
+                    </div>
+                    <h3>Your Occasion</h3>
+                    <p>Tell us what you are celebrating and we will help you choose food that suits your guests and
+                        budget.</p>
+                </div>
+                <div class="pillar-card reveal">
+                    <div class="pillar-icon">
+                        <i data-lucide="shield-check" width="26" height="26"></i>
+                    </div>
+                    <h3>Friendly Service</h3>
+                    <p>We keep communication clear, arrive prepared, and treat every customer with respect.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="section">
+        <div class="container">
+            <div class="cta-box reveal">
+                <span class="section-tag" style="margin-bottom:1.5rem;">
+                    <i data-lucide="calendar" width="14" height="14"></i>
+                    Let Us Cook For You
+                </span>
+                <h2> <span class="gold-gradient-text">Planning something special?</span></h2>
+                <p>Get in touch and tell us what you need. We would love to help with food for your next gathering.</p>
+                <div style="display:flex; gap:1rem; justify-content:center; flex-wrap:wrap;">
+                    <a href="webtask1.html#contact" class="btn btn-gold">
+                        <i data-lucide="phone" width="16" height="16"></i>
+                        Contact Us
+                    </a>
+                    <a href="webmenu.html" class="btn btn-outline">
+                        <i data-lucide="utensils" width="16" height="16"></i>
+                        See Our Menu
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <div class="container">
+            <div class="footer-grid">
+                <div>
+                    <p class="footer-title" style="font-size:1.3rem; letter-spacing:3px;">ER Snacks</p>
+                    <p style="color:var(--text-secondary); font-size:0.92rem; line-height:1.7;">Fresh snacks and
+                        friendly catering for family, friends, and local celebrations.</p>
+                </div>
+                <div>
+                    <p class="footer-title">Navigation</p>
+                    <ul class="footer-links">
+                        <li><a href="webtask1.html">Home</a></li>
+                        <li><a href="webmenu.html">Our Menu</a></li>
+                        <li><a href="webabout.html">Our Story</a></li>
+                        <li><a href="webtask1.html#contact">Reservations</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <p class="footer-title">Services</p>
+                    <ul class="footer-links">
+                        <li><a href="#">Family Gatherings</a></li>
+                        <li><a href="#">Office Lunches</a></li>
+                        <li><a href="#">Birthday Parties</a></li>
+                        <li><a href="#">Small Events</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <p class="footer-title">Contact</p>
+                    <ul class="footer-links">
+                        <li><a href="#">Serving our local community</a></li>
+                        <li><a href="tel:+15551234567">+1 (555) 123-4567</a></li>
+                        <li><a href="mailto:hello@ersnacks.com">hello@ersnacks.com</a></li>
+                        <li><a href="#">Mon–Sat: 9am – 8pm</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2026 ER Snacks &amp; Catering. All rights reserved.</p>
+                <p>Made with care for our community.</p>
+            </div>
+        </div>
+    </footer>
+
+    <button class="back-to-top" id="backToTop" onclick="window.scrollTo({top:0,behavior:'smooth'})">
+        <i data-lucide="chevron-up" width="20" height="20"></i>
+    </button>
+
+    <script>
+        lucide.createIcons();
+
+        window.addEventListener('scroll', function () {
+            var scrollTop = window.scrollY;
+            var docHeight = document.body.scrollHeight - window.innerHeight;
+            document.getElementById('scroll-progress').style.width = ((scrollTop / docHeight) * 100) + '%';
+
+            var navbar = document.getElementById('navbar');
+            if (scrollTop > 50) navbar.classList.add('scrolled');
+            else navbar.classList.remove('scrolled');
+
+            var backToTop = document.getElementById('backToTop');
+            if (scrollTop > 400) backToTop.classList.add('visible');
+            else backToTop.classList.remove('visible');
+
+            document.querySelectorAll('.reveal').forEach(function (el) {
+                if (el.getBoundingClientRect().top < window.innerHeight - 80) el.classList.add('visible');
+            });
+        });
+
+        window.dispatchEvent(new Event('scroll'));
+
+        // Mobile nav drawer
+        const navToggle = document.getElementById('navToggle');
+        const navLinksEl = document.querySelector('.nav-links');
+
+        if (navToggle && navLinksEl) {
+            navToggle.addEventListener('click', () => {
+                navLinksEl.classList.toggle('open');
+            });
+
+            navLinksEl.querySelectorAll('a').forEach(link => {
+                link.addEventListener('click', () => {
+                    navLinksEl.classList.remove('open');
+                });
+            });
+
+            document.addEventListener('click', (e) => {
+                if (!navLinksEl.contains(e.target) && !navToggle.contains(e.target)) {
+                    navLinksEl.classList.remove('open');
+                }
+            });
+        }
+
+        // Keep the warm light theme: it matches a welcoming, people-first food business.
+        document.documentElement.setAttribute('data-theme', 'light');
+    </script>
+</body>
+
+</html>

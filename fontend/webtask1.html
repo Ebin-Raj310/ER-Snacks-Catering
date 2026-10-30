@@ -1,0 +1,1764 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ER Snacks & Catering | Fresh food for every gathering</title>
+    <meta name="description"
+        content="Fresh snacks, meals, and friendly catering for family, friends, and local gatherings.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700;800;900&family=Plus+Jakarta+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400&family=Playfair+Display:ital,wght@0,400..900;1,400..900&display=swap"
+        rel="stylesheet">
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <style>
+        :root {
+            --font-display: 'Plus Jakarta Sans', Arial, sans-serif;
+            --font-serif: 'Plus Jakarta Sans', Arial, sans-serif;
+            --font-body: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, sans-serif;
+            --bg-primary: #fffaf3;
+            --bg-surface: #fff1df;
+            --bg-surface-elevated: #ffffff;
+            --bg-glass: rgba(255, 250, 243, 0.94);
+            --border-glass: rgba(102, 68, 44, 0.15);
+            --border-gold: rgba(193, 91, 44, 0.35);
+            --text-primary: #3b2922;
+            --text-secondary: #6f5a4f;
+            --text-muted: #927d70;
+            --gold-base: #c15b2c;
+            --gold-light: #f7dfb8;
+            --gold-dark: #9f4724;
+            --gold-gradient: linear-gradient(135deg, #dd7e48 0%, #c15b2c 100%);
+            --gold-glow: rgba(193, 91, 44, 0.2);
+            --accent-emerald: #5d8a62;
+            --danger: #ef4444;
+            --shadow-subtle: 0 8px 24px -10px rgba(91, 53, 33, 0.22);
+            --shadow-glow: 0 0 24px rgba(193, 91, 44, 0.12);
+            --shadow-card: 0 14px 28px -15px rgba(91, 53, 33, 0.28);
+            --radius-sm: 8px;
+            --radius-md: 12px;
+            --radius-lg: 18px;
+            --radius-full: 9999px;
+            --transition-smooth: all 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+
+        *,
+        *::before,
+        *::after {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            -webkit-tap-highlight-color: transparent;
+        }
+
+        html {
+            scroll-behavior: smooth;
+            font-size: 16px;
+        }
+
+        body {
+            font-family: var(--font-body);
+            background-color: var(--bg-primary);
+            color: var(--text-primary);
+            line-height: 1.6;
+            overflow-x: hidden;
+            transition: background-color 0.4s ease, color 0.4s ease;
+        }
+
+        ::selection {
+            background-color: var(--gold-base);
+            color: #000;
+        }
+
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+
+        ::-webkit-scrollbar-track {
+            background: var(--bg-primary);
+        }
+
+        ::-webkit-scrollbar-thumb {
+            background: var(--bg-surface-elevated);
+            border-radius: 4px;
+            border: 2px solid var(--bg-primary);
+        }
+
+        ::-webkit-scrollbar-thumb:hover {
+            background: var(--gold-dark);
+        }
+
+        #scroll-progress {
+            position: fixed;
+            top: 0;
+            left: 0;
+            height: 3px;
+            background: var(--gold-gradient);
+            z-index: 2000;
+            width: 0%;
+            transition: width 0.1s ease-out;
+            box-shadow: 0 0 10px var(--gold-base);
+        }
+
+        .container {
+            max-width: 1280px;
+            margin: 0 auto;
+            padding: 0 1.5rem;
+        }
+
+        .section {
+            padding: 6rem 0;
+            position: relative;
+        }
+
+        .section-tag {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            font-family: var(--font-display);
+            font-size: 0.8rem;
+            font-weight: 700;
+            letter-spacing: 3px;
+            text-transform: uppercase;
+            color: var(--gold-base);
+            padding: 0.35rem 1rem;
+            background: rgba(212, 175, 55, 0.08);
+            border: 1px solid var(--border-gold);
+            border-radius: var(--radius-full);
+            margin-bottom: 1.25rem;
+        }
+
+        .section-title {
+            font-family: var(--font-serif);
+            font-size: clamp(2.2rem, 5vw, 3.5rem);
+            font-weight: 700;
+            line-height: 1.2;
+            margin-bottom: 1.25rem;
+            color: var(--text-primary);
+        }
+
+        .section-subtitle {
+            color: var(--text-secondary);
+            font-size: clamp(1rem, 2vw, 1.15rem);
+            max-width: 650px;
+            margin-bottom: 3.5rem;
+        }
+
+        .gold-gradient-text {
+            background: var(--gold-gradient);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            display: inline-block;
+        }
+
+        .navbar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            z-index: 1500;
+            transition: var(--transition-smooth);
+            padding: 1.25rem 0;
+        }
+
+        .navbar.scrolled {
+            background: var(--bg-glass);
+            backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px);
+            padding: 0.85rem 0;
+            border-bottom: 1px solid var(--border-glass);
+            box-shadow: var(--shadow-subtle);
+        }
+
+        .nav-inner {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .brand {
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+            text-decoration: none;
+            color: var(--text-primary);
+        }
+
+        .brand-logo-icon {
+            width: 38px;
+            height: 38px;
+            background: var(--gold-gradient);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #000;
+            font-weight: 900;
+            font-family: var(--font-display);
+            font-size: 1.1rem;
+            box-shadow: var(--shadow-glow);
+        }
+
+        .brand-name {
+            font-family: var(--font-display);
+            font-size: 1.25rem;
+            font-weight: 700;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+        }
+
+        .nav-links {
+            display: flex;
+            align-items: center;
+            list-style: none;
+            gap: 2rem;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: var(--text-secondary);
+            font-size: 0.9rem;
+            font-weight: 600;
+            letter-spacing: 1.5px;
+            text-transform: uppercase;
+            transition: var(--transition-smooth);
+            position: relative;
+            padding: 0.35rem 0;
+        }
+
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: var(--gold-base);
+            transition: var(--transition-smooth);
+        }
+
+        .nav-links a:hover,
+        .nav-links a.active {
+            color: var(--gold-base);
+        }
+
+        .nav-links a:hover::after,
+        .nav-links a.active::after {
+            width: 100%;
+        }
+
+        .nav-actions {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.6rem;
+            font-family: var(--font-body);
+            font-size: 0.88rem;
+            font-weight: 700;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            padding: 0.75rem 1.6rem;
+            border-radius: var(--radius-full);
+            text-decoration: none;
+            cursor: pointer;
+            transition: var(--transition-smooth);
+            border: none;
+        }
+
+        .btn-gold {
+            background: var(--gold-gradient);
+            color: #000;
+            box-shadow: 0 6px 20px rgba(212, 175, 55, 0.35);
+        }
+
+        .btn-gold:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 25px rgba(212, 175, 55, 0.5);
+        }
+
+        .btn-outline {
+            background: transparent;
+            color: var(--text-primary);
+            border: 1px solid var(--border-glass);
+            backdrop-filter: blur(8px);
+        }
+
+        .btn-outline:hover {
+            border-color: var(--gold-base);
+            color: var(--gold-base);
+            background: rgba(212, 175, 55, 0.05);
+            transform: translateY(-2px);
+        }
+
+
+        .nav-toggle-btn {
+            display: none;
+            background: none;
+            border: none;
+            color: var(--text-primary);
+            cursor: pointer;
+            padding: 0.5rem;
+        }
+
+        .hero {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            position: relative;
+            padding: 8rem 0 5rem;
+            background-image:
+                radial-gradient(circle at 80% 20%, rgba(212, 175, 55, 0.15), transparent 45%),
+                radial-gradient(circle at 20% 80%, rgba(16, 185, 129, 0.08), transparent 40%),
+                linear-gradient(to bottom, rgba(10, 11, 14, 0.5) 0%, rgba(10, 11, 14, 0.85) 80%, var(--bg-primary) 100%),
+                url("../image/bug.jpg");
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+        }
+
+
+        .hero-content {
+            max-width: 850px;
+            position: relative;
+            z-index: 2;
+        }
+
+        .hero-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.6rem;
+            background: rgba(255, 255, 255, 0.07);
+            border: 1px solid var(--border-gold);
+            padding: 0.5rem 1.25rem;
+            border-radius: var(--radius-full);
+            backdrop-filter: blur(12px);
+            font-size: 0.85rem;
+            font-weight: 600;
+            color: var(--gold-light);
+            margin-bottom: 2rem;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+            animation: pulseGlow 4s infinite alternate;
+        }
+
+        @keyframes pulseGlow {
+            from {
+                box-shadow: 0 0 10px rgba(212, 175, 55, 0.2);
+            }
+
+            to {
+                box-shadow: 0 0 25px rgba(212, 175, 55, 0.45);
+            }
+        }
+
+        .hero-title {
+            font-family: var(--font-serif);
+            font-size: clamp(3rem, 7.5vw, 6.2rem);
+            font-weight: 800;
+            line-height: 1.08;
+            letter-spacing: 1px;
+            margin-bottom: 1.75rem;
+            text-shadow: 0 4px 20px rgba(0, 0, 0, 0.4);
+        }
+
+        .hero-description {
+            font-size: clamp(1.05rem, 2.2vw, 1.3rem);
+            color: rgb(26, 25, 25);
+            max-width: 620px;
+            margin-bottom: 2.75rem;
+            line-height: 1.7;
+        }
+
+        .hero-cta-group {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1.25rem;
+            align-items: center;
+        }
+
+        .hero-stats {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 1.5rem;
+            margin-top: 5rem;
+            padding-top: 3rem;
+            border-top: 1px solid var(--border-glass);
+        }
+
+        .stat-item {
+            text-align: left;
+        }
+
+        .stat-number {
+            font-family: var(--font-display);
+            font-size: 2.2rem;
+            font-weight: 800;
+            color: var(--gold-base);
+            display: block;
+            margin-bottom: 0.25rem;
+        }
+
+        .stat-label {
+            font-size: 0.85rem;
+            color: rgb(11, 11, 11);
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+            font-weight: 600;
+        }
+
+        .about-grid {
+            display: grid;
+            grid-template-columns: 1fr 1.1fr;
+            gap: 4.5rem;
+            align-items: center;
+        }
+
+        .about-visual {
+            position: relative;
+        }
+
+        .image-card-3d {
+            position: relative;
+            border-radius: var(--radius-lg);
+            overflow: hidden;
+            box-shadow: var(--shadow-card);
+            border: 1px solid var(--border-glass);
+            transform-style: preserve-3d;
+            transition: transform 0.3s ease;
+        }
+
+        .image-card-3d img {
+            width: 100%;
+            height: auto;
+            aspect-ratio: 4/5;
+            object-fit: cover;
+            display: block;
+            transition: transform 0.6s ease;
+        }
+
+        .image-card-3d:hover img {
+            transform: scale(1.04);
+        }
+
+        .floating-badge {
+            position: absolute;
+            bottom: 2rem;
+            right: -1.5rem;
+            background: var(--bg-glass);
+            backdrop-filter: blur(16px);
+            border: 1px solid var(--border-gold);
+            padding: 1.25rem 1.75rem;
+            border-radius: var(--radius-md);
+            box-shadow: var(--shadow-card);
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            animation: floatSlow 5s ease-in-out infinite alternate;
+        }
+
+        @keyframes floatSlow {
+            0% {
+                transform: translateY(0);
+            }
+
+            100% {
+                transform: translateY(-12px);
+            }
+        }
+
+        .floating-badge i {
+            color: var(--gold-base);
+        }
+
+        .badge-content h4 {
+            font-family: var(--font-display);
+            font-size: 1.1rem;
+            font-weight: 700;
+        }
+
+        .badge-content p {
+            font-size: 0.8rem;
+            color: var(--text-secondary);
+        }
+
+        .about-features {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1.5rem;
+            margin-top: 2rem;
+        }
+
+        .feature-box {
+            background: var(--bg-surface);
+            border: 1px solid var(--border-glass);
+            padding: 1.5rem;
+            border-radius: var(--radius-md);
+            transition: var(--transition-smooth);
+        }
+
+        .feature-box:hover {
+            border-color: var(--border-gold);
+            transform: translateY(-4px);
+            box-shadow: var(--shadow-subtle);
+        }
+
+        .feature-icon {
+            color: var(--gold-base);
+            margin-bottom: 0.75rem;
+        }
+
+        .feature-box h4 {
+            font-family: var(--font-serif);
+            font-size: 1.15rem;
+            margin-bottom: 0.4rem;
+        }
+
+        .feature-box p {
+            font-size: 0.88rem;
+            color: var(--text-secondary);
+            line-height: 1.5;
+        }
+
+        .menu-filter-bar {
+            display: flex;
+            justify-content: center;
+            gap: 0.75rem;
+            flex-wrap: wrap;
+            margin-bottom: 3.5rem;
+        }
+
+        .filter-btn {
+            background: var(--bg-surface);
+            border: 1px solid var(--border-glass);
+            color: var(--text-secondary);
+            padding: 0.6rem 1.4rem;
+            border-radius: var(--radius-full);
+            font-size: 0.85rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: var(--transition-smooth);
+            letter-spacing: 0.5px;
+        }
+
+        .filter-btn:hover,
+        .filter-btn.active {
+            background: var(--gold-gradient);
+            color: #000;
+            border-color: transparent;
+            font-weight: 700;
+            box-shadow: 0 4px 15px rgba(212, 175, 55, 0.3);
+        }
+
+        .menu-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 2rem;
+        }
+
+        .menu-card {
+            background: var(--bg-surface);
+            border: 1px solid var(--border-glass);
+            border-radius: var(--radius-md);
+            overflow: hidden;
+            transition: var(--transition-smooth);
+            display: flex;
+            flex-direction: column;
+            position: relative;
+        }
+
+        .menu-card:hover {
+            transform: translateY(-6px);
+            border-color: var(--border-gold);
+            box-shadow: var(--shadow-card);
+        }
+
+        .card-image-wrap {
+            position: relative;
+            height: 220px;
+            overflow: hidden;
+        }
+
+        .card-image-wrap img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.6s ease;
+        }
+
+        .menu-card:hover .card-image-wrap img {
+            transform: scale(1.08);
+        }
+
+        .card-tag {
+            position: absolute;
+            top: 1rem;
+            left: 1rem;
+            background: rgba(10, 11, 14, 0.8);
+            backdrop-filter: blur(8px);
+            color: var(--gold-light);
+            font-size: 0.75rem;
+            font-weight: 700;
+            padding: 0.3rem 0.8rem;
+            border-radius: var(--radius-full);
+            border: 1px solid var(--border-gold);
+            letter-spacing: 0.5px;
+        }
+
+        .card-body {
+            padding: 1.75rem;
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+
+        .card-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: baseline;
+            margin-bottom: 0.75rem;
+        }
+
+        .dish-title {
+            font-family: var(--font-serif);
+            font-size: 1.35rem;
+            font-weight: 700;
+            color: var(--text-primary);
+        }
+
+        .dish-price {
+            font-family: var(--font-display);
+            font-size: 1.3rem;
+            font-weight: 800;
+            color: var(--gold-base);
+        }
+
+        .dish-desc {
+            font-size: 0.92rem;
+            color: var(--text-secondary);
+            margin-bottom: 1.5rem;
+            line-height: 1.6;
+        }
+
+        .card-footer {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding-top: 1rem;
+            border-top: 1px solid var(--border-glass);
+        }
+
+        .dietary-tags {
+            display: flex;
+            gap: 0.4rem;
+        }
+
+        .badge-pill {
+            font-size: 0.72rem;
+            padding: 0.2rem 0.55rem;
+            border-radius: var(--radius-full);
+            background: var(--bg-surface-elevated);
+            color: var(--text-muted);
+        }
+
+        .calculator-wrapper {
+            background: linear-gradient(145deg, var(--bg-surface), var(--bg-surface-elevated));
+            border: 1px solid var(--border-gold);
+            border-radius: var(--radius-lg);
+            padding: 3.5rem;
+            box-shadow: var(--shadow-card);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .calculator-wrapper::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            right: -20%;
+            width: 400px;
+            height: 400px;
+            background: radial-gradient(circle, rgba(212, 175, 55, 0.08), transparent 70%);
+            border-radius: 50%;
+            pointer-events: none;
+        }
+
+        .calc-grid {
+            display: grid;
+            grid-template-columns: 1.2fr 0.8fr;
+            gap: 3.5rem;
+        }
+
+        .calc-input-group {
+            margin-bottom: 2rem;
+        }
+
+        .calc-label {
+            display: flex;
+            justify-content: space-between;
+            font-weight: 600;
+            margin-bottom: 0.75rem;
+            color: var(--text-primary);
+        }
+
+        .calc-slider {
+            width: 100%;
+            height: 6px;
+            border-radius: 4px;
+            background: var(--bg-surface-elevated);
+            outline: none;
+            -webkit-appearance: none;
+            appearance: none;
+            cursor: pointer;
+        }
+
+        .calc-slider::-webkit-slider-thumb {
+            -webkit-appearance: none;
+            appearance: none;
+            width: 22px;
+            height: 22px;
+            border-radius: 50%;
+            background: var(--gold-gradient);
+            cursor: pointer;
+            box-shadow: 0 0 10px var(--gold-base);
+            border: 2px solid #000;
+        }
+
+        .pill-selector {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(130px, 1fr));
+            gap: 0.75rem;
+        }
+
+        .pill-option {
+            background: var(--bg-surface);
+            border: 1px solid var(--border-glass);
+            padding: 0.85rem 1rem;
+            border-radius: var(--radius-sm);
+            text-align: center;
+            cursor: pointer;
+            transition: var(--transition-smooth);
+            font-size: 0.9rem;
+            font-weight: 600;
+        }
+
+        .pill-option:hover,
+        .pill-option.active {
+            border-color: var(--gold-base);
+            background: rgba(212, 175, 55, 0.1);
+            color: var(--gold-light);
+        }
+
+        .calc-summary-box {
+            background: var(--bg-primary);
+            border: 1px solid var(--border-glass);
+            border-radius: var(--radius-md);
+            padding: 2.5rem;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            text-align: center;
+        }
+
+        .estimate-title {
+            font-size: 0.9rem;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            color: var(--text-secondary);
+            margin-bottom: 0.5rem;
+        }
+
+        .estimate-amount {
+            font-family: var(--font-display);
+            font-size: clamp(2.5rem, 5vw, 3.8rem);
+            font-weight: 800;
+            color: var(--gold-base);
+            margin-bottom: 1.5rem;
+        }
+
+        .estimate-breakdown {
+            list-style: none;
+            text-align: left;
+            margin-bottom: 2rem;
+            font-size: 0.9rem;
+            color: var(--text-secondary);
+        }
+
+        .estimate-breakdown li {
+            display: flex;
+            justify-content: space-between;
+            padding: 0.5rem 0;
+            border-bottom: 1px dashed var(--border-glass);
+        }
+
+        .contact-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+        }
+
+        .contact-info-cards {
+            display: flex;
+            flex-direction: column;
+            gap: 1.5rem;
+        }
+
+        .info-card {
+            display: flex;
+            align-items: flex-start;
+            gap: 1.25rem;
+            background: var(--bg-surface);
+            border: 1px solid var(--border-glass);
+            padding: 1.75rem;
+            border-radius: var(--radius-md);
+            transition: var(--transition-smooth);
+        }
+
+        .info-card:hover {
+            border-color: var(--border-gold);
+            transform: translateX(6px);
+        }
+
+        .info-icon {
+            width: 48px;
+            height: 48px;
+            border-radius: 12px;
+            background: rgba(212, 175, 55, 0.1);
+            color: var(--gold-base);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0;
+        }
+
+        .info-details h4 {
+            font-family: var(--font-serif);
+            font-size: 1.15rem;
+            margin-bottom: 0.25rem;
+        }
+
+        .info-details p {
+            color: var(--text-secondary);
+            font-size: 0.92rem;
+        }
+
+        .form-box {
+            background: var(--bg-surface);
+            border: 1px solid var(--border-glass);
+            border-radius: var(--radius-md);
+            padding: 2.5rem;
+            box-shadow: var(--shadow-subtle);
+        }
+
+        .form-row {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1.25rem;
+            margin-bottom: 1.25rem;
+        }
+
+        .form-group {
+            margin-bottom: 1.25rem;
+        }
+
+        .form-group label {
+            display: block;
+            font-size: 0.85rem;
+            font-weight: 600;
+            letter-spacing: 0.5px;
+            margin-bottom: 0.5rem;
+            color: var(--text-secondary);
+        }
+
+        .form-control {
+            width: 100%;
+            padding: 0.9rem 1.2rem;
+            background: var(--bg-primary);
+            border: 1px solid var(--border-glass);
+            border-radius: var(--radius-sm);
+            color: var(--text-primary);
+            font-family: var(--font-body);
+            font-size: 0.95rem;
+            transition: var(--transition-smooth);
+        }
+
+        .form-control:focus {
+            outline: none;
+            border-color: var(--gold-base);
+            box-shadow: 0 0 0 3px rgba(212, 175, 55, 0.15);
+        }
+
+        textarea.form-control {
+            resize: vertical;
+            min-height: 120px;
+        }
+
+        footer {
+            background: var(--bg-surface);
+            border-top: 1px solid var(--border-glass);
+            padding: 5rem 0 2.5rem;
+        }
+
+        .footer-grid {
+            display: grid;
+            grid-template-columns: 2fr 1fr 1fr 1.5fr;
+            gap: 3rem;
+            margin-bottom: 4rem;
+        }
+
+        .footer-brand p {
+            color: var(--text-secondary);
+            font-size: 0.95rem;
+            margin-top: 1rem;
+            max-width: 320px;
+        }
+
+        .footer-title {
+            font-family: var(--font-display);
+            font-size: 1rem;
+            font-weight: 700;
+            letter-spacing: 1.5px;
+            text-transform: uppercase;
+            color: var(--text-primary);
+            margin-bottom: 1.25rem;
+        }
+
+        .footer-links {
+            list-style: none;
+            display: flex;
+            flex-direction: column;
+            gap: 0.75rem;
+        }
+
+        .footer-links a {
+            text-decoration: none;
+            color: var(--text-secondary);
+            font-size: 0.9rem;
+            transition: var(--transition-smooth);
+        }
+
+        .footer-links a:hover {
+            color: var(--gold-base);
+            padding-left: 4px;
+        }
+
+        .footer-bottom {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding-top: 2rem;
+            border-top: 1px solid var(--border-glass);
+            font-size: 0.88rem;
+            color: var(--text-muted);
+        }
+
+        .back-to-top {
+            position: fixed;
+            bottom: 2rem;
+            right: 2rem;
+            width: 46px;
+            height: 46px;
+            border-radius: 50%;
+            background: var(--bg-surface-elevated);
+            border: 1px solid var(--border-gold);
+            color: var(--gold-base);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            z-index: 1000;
+            opacity: 0;
+            visibility: hidden;
+            transition: var(--transition-smooth);
+            box-shadow: var(--shadow-subtle);
+        }
+
+        .back-to-top.visible {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        .back-to-top:hover {
+            background: var(--gold-gradient);
+            color: #000;
+            transform: translateY(-4px);
+        }
+
+        .toast-msg {
+            position: fixed;
+            bottom: 2rem;
+            left: 50%;
+            transform: translateX(-50%) translateY(100px);
+            background: var(--bg-surface-elevated);
+            border: 1px solid var(--border-gold);
+            color: var(--text-primary);
+            padding: 1rem 2rem;
+            border-radius: var(--radius-full);
+            box-shadow: var(--shadow-card);
+            z-index: 3000;
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+            font-weight: 600;
+            transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+            pointer-events: none;
+        }
+
+        .toast-msg.show {
+            transform: translateX(-50%) translateY(0);
+        }
+
+        @media (max-width: 1024px) {
+            .hero-stats {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 2rem;
+            }
+
+            .about-grid,
+            .calc-grid,
+            .contact-grid {
+                grid-template-columns: 1fr;
+                gap: 3rem;
+            }
+
+            .footer-grid {
+                grid-template-columns: 1fr 1fr;
+            }
+
+            .floating-badge {
+                right: 1rem;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .section {
+                padding: 4.5rem 0;
+            }
+
+            .nav-toggle-btn {
+                display: block;
+            }
+
+            .nav-links {
+                position: fixed;
+                top: 0;
+                right: -100%;
+                width: 80%;
+                max-width: 320px;
+                height: 100vh;
+                background: var(--bg-surface);
+                flex-direction: column;
+                justify-content: center;
+                gap: 2rem;
+                padding: 2rem;
+                transition: right 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+                box-shadow: -10px 0 30px rgba(0, 0, 0, 0.5);
+                z-index: 1400;
+            }
+
+            .nav-links.open {
+                right: 0;
+            }
+
+            .hero-stats {
+                grid-template-columns: 1fr 1fr;
+                margin-top: 3rem;
+            }
+
+            .about-features,
+            .form-row {
+                grid-template-columns: 1fr;
+            }
+
+            .calculator-wrapper {
+                padding: 2rem 1.5rem;
+            }
+
+            .footer-grid {
+                grid-template-columns: 1fr;
+                gap: 2.5rem;
+            }
+
+            .footer-bottom {
+                flex-direction: column;
+                gap: 1rem;
+                text-align: center;
+            }
+        }
+
+        .navbar.scrolled {
+            background: var(--bg-glass);
+            box-shadow: var(--shadow-subtle);
+        }
+
+        .brand-name,
+        .section-tag,
+        .footer-title {
+            letter-spacing: 0.8px;
+        }
+
+        .hero {
+            min-height: 78vh;
+            background-image: linear-gradient(90deg, rgba(252, 238, 219, 0.94) 0%, rgba(232, 218, 197, 0.78) 55%, rgba(255, 250, 243, .32) 100%), url("../image/food.jpg");
+            background-position: center;
+            background-attachment: scroll;
+        }
+
+        .hero-badge {
+            background: #fff7ed;
+            color: var(--gold-dark);
+            box-shadow: none;
+            animation: none;
+        }
+
+        .hero-title {
+            font-weight: 750;
+            letter-spacing: -1.8px;
+            text-shadow: none;
+        }
+
+        .gold-gradient-text {
+            background: none;
+            -webkit-text-fill-color: currentColor;
+            color: var(--gold-base);
+        }
+
+        .btn {
+            letter-spacing: .3px;
+            text-transform: none;
+        }
+
+        .btn-gold {
+            color: #fff;
+            box-shadow: none;
+        }
+
+        .btn-outline {
+            background: #fff;
+            backdrop-filter: none;
+        }
+
+        .menu-card,
+        .feature-box,
+        .info-card,
+        .form-box {
+            box-shadow: none;
+        }
+
+        .menu-card:hover,
+        .feature-box:hover,
+        .info-card:hover {
+            transform: translateY(-3px);
+        }
+
+        .floating-badge {
+            box-shadow: var(--shadow-subtle);
+        }
+
+        @media (max-width: 700px) {
+            .hero {
+                min-height: 65vh;
+                background-image: linear-gradient(180deg, rgba(252, 238, 219, 0.88) 0%, rgba(232, 218, 197, 0.70) 50%, rgba(255, 250, 243, 0.20) 100%), url("../image/food.jpg");
+                background-size: cover;
+                background-position: center center;
+                background-attachment: scroll;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <div id="scroll-progress"></div>
+
+    <header class="navbar" id="navbar">
+        <div class="container nav-inner">
+            <a href="webtask1.html" class="brand">
+                <div class="brand-logo-icon">E</div>
+                <span class="brand-name">ER Snacks &amp; Catering</span>
+            </a>
+
+            <ul class="nav-links" id="navLinks">
+                <li><a href="webtask1.html" class="active">Home</a></li>
+                <li><a href="webabout.html">About</a></li>
+                <li><a href="webmenu.html">Menu</a></li>
+                <li><a href="webcon.html">Contact</a></li>
+            </ul>
+
+            <div class="nav-actions">
+
+
+                <a href="webcon.html" class="btn btn-gold"
+                    style="display: none; @media(min-width:768px){display:inline-flex;}">Book Event</a>
+
+                <button class="nav-toggle-btn" id="menuToggle" aria-label="Toggle Menu">
+                    <i data-lucide="menu"></i>
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <section class="hero" id="home">
+        <div class="container">
+            <div class="hero-content">
+                <div class="hero-badge">
+                    <i data-lucide="sparkles" style="width: 16px; height: 16px; color: var(--gold-base);"></i>
+                    <span>FRESH FOOD FOR EVERYDAY MOMENTS</span>
+                </div>
+
+                <h1 class="hero-title">
+                    Food made with care for <span class="gold-gradient-text">your people</span>
+                </h1>
+
+                <p class="hero-description">
+                    From quick snacks to family celebrations, we make honest, comforting food and help take the
+                    stress out of feeding a group.
+                </p>
+
+                <div class="hero-cta-group">
+                    <a href="#menu" class="btn btn-gold">
+                        <span>Explore Menu</span>
+                        <i data-lucide="arrow-right" style="width: 18px; height: 18px;"></i>
+                    </a>
+                    <a href="#contact" class="btn btn-outline">
+                        <i data-lucide="calendar" style="width: 18px; height: 18px;"></i>
+                        <span>Plan an Order</span>
+                    </a>
+                </div>
+
+                <div class="hero-stats">
+                    <div class="stat-item">
+                        <span class="stat-number">Fresh</span>
+                        <span class="stat-label">Made to order</span>
+                    </div>
+                    <div class="stat-item">
+                        <span class="stat-number">Local</span>
+                        <span class="stat-label">Family & friends</span>
+                    </div>
+                    <div class="stat-item">
+                        <span class="stat-number">Flexible</span>
+                        <span class="stat-label">Menus for your event</span>
+                    </div>
+                    <div class="stat-item">
+                        <span class="stat-number" data-target="4.9">4.9 ★</span>
+                        <span class="stat-label">Client Rating</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="section" id="about">
+        <div class="container">
+            <div class="about-grid">
+                <div class="about-visual">
+                    <div class="image-card-3d" id="aboutCard">
+                        <img src="../image/granma.jpg" alt="Artisanal Catering Preparation">
+                    </div>
+                    <div class="floating-badge">
+                        <i data-lucide="award" style="width: 32px; height: 32px;"></i>
+                        <div class="badge-content">
+                            <h4>Made fresh</h4>
+                            <p>Prepared with care every day</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="about-info">
+                    <span class="section-tag">Our Kitchen, Our Community</span>
+                    <h2 class="section-title">Simple food, thoughtfully made</h2>
+                    <p class="section-subtitle" style="margin-bottom: 1.5rem;">
+                        ER Snacks &amp; Catering began with a simple idea: food should feel generous, familiar, and easy
+                        to share. We cook for families, friends, teams, and neighbours.
+                    </p>
+                    <p style="color: var(--text-secondary); margin-bottom: 2rem;">
+                        Tell us about your day, your guests, and your budget. We will help you put together a menu
+                        that suits the occasion without making it complicated.
+                    </p>
+
+                    <div class="about-features">
+                        <div class="feature-box">
+                            <i data-lucide="leaf" class="feature-icon"></i>
+                            <h4>Fresh ingredients</h4>
+                            <p>We choose good ingredients and prepare them carefully.</p>
+                        </div>
+                        <div class="feature-box">
+                            <i data-lucide="utensils-crossed" class="feature-icon"></i>
+                            <h4>Hands-on cooking</h4>
+                            <p>Our cooks bring patience, experience, and care to every order.</p>
+                        </div>
+                        <div class="feature-box">
+                            <i data-lucide="glass-water" class="feature-icon"></i>
+                            <h4>Menu help</h4>
+                            <p>We help you choose dishes your guests will enjoy.</p>
+                        </div>
+                        <div class="feature-box">
+                            <i data-lucide="shield-check" class="feature-icon"></i>
+                            <h4>Friendly service</h4>
+                            <p>Clear communication, careful packing, and service with respect.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="section" id="menu" style="background: var(--bg-surface-elevated);">
+        <div class="container">
+            <div style="text-align: center; max-width: 700px; margin: 0 auto 3rem;">
+                <span class="section-tag">Popular choices</span>
+                <h2 class="section-title">Food people love to share</h2>
+                <p class="section-subtitle" style="margin-bottom: 2rem;">
+                    A few crowd-pleasing dishes from our everyday menu.
+                </p>
+
+                <div class="menu-filter-bar">
+                    <button class="filter-btn active" data-filter="all">All Food</button>
+                    <button class="filter-btn" data-filter="brunch">Snacks & Breakfast</button>
+                    <button class="filter-btn" data-filter="mains">Meals</button>
+                    <button class="filter-btn" data-filter="desserts">Desserts</button>
+                </div>
+            </div>
+
+            <div class="menu-grid" id="menuGrid">
+
+                <div class="menu-card" data-category="brunch">
+                    <div class="card-image-wrap">
+                        <img src="../image/bakey.jpg" alt="Artisanal Bread Basket">
+                        <span class="card-tag">Freshly baked</span>
+                    </div>
+                    <div class="card-body">
+                        <div>
+                            <div class="card-header">
+                                <h3 class="dish-title">Bread & Fruit Basket</h3>
+                                <span class="dish-price">$9.50</span>
+                            </div>
+                            <p class="dish-desc">
+                                Freshly baked sourdough, rustic brioche, medjool dates, organic figs, and whipped
+                                honeycomb butter.
+                            </p>
+                        </div>
+                        <div class="card-footer">
+                            <div class="dietary-tags">
+                                <span class="badge-pill">Vegetarian</span>
+                                <span class="badge-pill">Organic</span>
+                            </div>
+                            <button class="btn btn-outline" style="padding: 0.4rem 0.9rem; font-size: 0.75rem;"
+                                onclick="openQuickOrder('Bread & Fruit Basket', 9.50)">Add to order</button>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="menu-card" data-category="brunch">
+                    <div class="card-image-wrap">
+                        <img src="../image/warmwaff.jpg" alt="Belgian Truffle Waffles">
+                        <span class="card-tag">A sweet favourite</span>
+                    </div>
+                    <div class="card-body">
+                        <div>
+                            <div class="card-header">
+                                <h3 class="dish-title">Warm Belgian Waffle</h3>
+                                <span class="dish-price">$14.00</span>
+                            </div>
+                            <p class="dish-desc">
+                                A warm vanilla waffle with fruit compote and maple syrup.
+                            </p>
+                        </div>
+                        <div class="card-footer">
+                            <div class="dietary-tags">
+                                <span class="badge-pill">Signature</span>
+                                <span class="badge-pill">Sweet</span>
+                            </div>
+                            <button class="btn btn-outline" style="padding: 0.4rem 0.9rem; font-size: 0.75rem;"
+                                onclick="openQuickOrder('Warm Belgian Waffle', 14.00)">Add to order</button>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="menu-card" data-category="mains">
+                    <div class="card-image-wrap">
+                        <img src="../image/fishdish.jpg" alt="Pan-Seared Chilean Sea Bass">
+                        <span class="card-tag">Wild Catch</span>
+                    </div>
+                    <div class="card-body">
+                        <div>
+                            <div class="card-header">
+                                <h3 class="dish-title">Pan-Seared Chilean Sea Bass</h3>
+                                <span class="dish-price">$68.00</span>
+                            </div>
+                            <p class="dish-desc">
+                                Crispy skin sea bass fillet with tender asparagus, saffron velouté emulsion,
+                                microgreens, and pink peppercorns.
+                            </p>
+                        </div>
+                        <div class="card-footer">
+                            <div class="dietary-tags">
+                                <span class="badge-pill">Signature</span>
+                                <span class="badge-pill">Gluten-Free</span>
+                            </div>
+                            <button class="btn btn-outline" style="padding: 0.4rem 0.9rem; font-size: 0.75rem;"
+                                onclick="openQuickOrder('Chilean Sea Bass', 68.00)">Add to order</button>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="menu-card" data-category="mains">
+                    <div class="card-image-wrap">
+                        <img src="../image/chiken.jpg" alt="Herb-Roasted Farm Chicken">
+                        <span class="card-tag">Poultry Special</span>
+                    </div>
+                    <div class="card-body">
+                        <div>
+                            <div class="card-header">
+                                <h3 class="dish-title">Herb-Roasted Farm Chicken</h3>
+                                <span class="dish-price">$46.00</span>
+                            </div>
+                            <p class="dish-desc">
+                                Free-range chicken breast grilled over open embers with fresh thyme jus, blistered
+                                garlic, and Périgord truffle sauce.
+                            </p>
+                        </div>
+                        <div class="card-footer">
+                            <div class="dietary-tags">
+                                <span class="badge-pill">Organic</span>
+                                <span class="badge-pill">Chef's Table</span>
+                            </div>
+                            <button class="btn btn-outline" style="padding: 0.4rem 0.9rem; font-size: 0.75rem;"
+                                onclick="openQuickOrder('Herb-Roasted Chicken', 46.00)">Add to order</button>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="menu-card" data-category="mains">
+                    <div class="card-image-wrap">
+                        <img src="../image/chicut.jpg" alt="Crispy Artisanal Chicken Cutlet">
+                        <span class="card-tag">Artisanal Cutlet</span>
+                    </div>
+                    <div class="card-body">
+                        <div>
+                            <div class="card-header">
+                                <h3 class="dish-title">Crispy Artisanal Chicken Cutlet</h3>
+                                <span class="dish-price">$38.00</span>
+                            </div>
+                            <p class="dish-desc">
+                                Golden herb-panko crusted chicken cutlets with fresh flat-leaf parsley, lemon beurre
+                                noisette, and aged Parmesan ribbons.
+                            </p>
+                        </div>
+                        <div class="card-footer">
+                            <div class="dietary-tags">
+                                <span class="badge-pill">Artisanal</span>
+                                <span class="badge-pill">Farm-Fresh</span>
+                            </div>
+                            <button class="btn btn-outline" style="padding: 0.4rem 0.9rem; font-size: 0.75rem;"
+                                onclick="openQuickOrder('Chicken Cutlet', 38.00)">Add to order</button>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="menu-card" data-category="desserts">
+                    <div class="card-image-wrap">
+                        <img src="../image/chimenu.jpg" alt="Wild Berry Soufflé Pancakes">
+                        <span class="card-tag">Dessert Special</span>
+                    </div>
+                    <div class="card-body">
+                        <div>
+                            <div class="card-header">
+                                <h3 class="dish-title">Wild Blueberry Soufflé Stack</h3>
+                                <span class="dish-price">$12.50</span>
+                            </div>
+                            <p class="dish-desc">
+                                Japanese-style cloud soufflé pancakes with hand-picked Maine blueberries, crème fraîche,
+                                and violet syrup.
+                            </p>
+                        </div>
+                        <div class="card-footer">
+                            <div class="dietary-tags">
+                                <span class="badge-pill">Chef's Choice</span>
+                                <span class="badge-pill">Berry</span>
+                            </div>
+                            <button class="btn btn-outline" style="padding: 0.4rem 0.9rem; font-size: 0.75rem;"
+                                onclick="openQuickOrder('Wild Blueberry Soufflé', 12.50)">Add to order</button>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <section class="section" id="contact">
+        <div class="container">
+            <div style="text-align: center; max-width: 700px; margin: 0 auto 3rem;">
+                <span class="section-tag">Direct Inquiries</span>
+                <h2 class="section-title">Reserve Your Date</h2>
+                <p class="section-subtitle">
+                    Tell us what you are planning and we will get back to you with a simple, helpful plan.
+                </p>
+            </div>
+
+            <div class="contact-grid">
+                <div class="contact-info-cards">
+                    <div class="info-card">
+                        <div class="info-icon">
+                            <i data-lucide="map-pin"></i>
+                        </div>
+                        <div class="info-details">
+                            <h4>Our kitchen</h4>
+                            <p>Serving our local community</p>
+                        </div>
+                    </div>
+
+                    <div class="info-card">
+                        <div class="info-icon">
+                            <i data-lucide="phone-call"></i>
+                        </div>
+                        <div class="info-details">
+                            <h4>Call or message us</h4>
+                            <p>+91 9876543210 • Mon-Sun, 8am-9pm EST</p>
+                        </div>
+                    </div>
+
+                    <div class="info-card">
+                        <div class="info-icon">
+                            <i data-lucide="mail"></i>
+                        </div>
+                        <div class="info-details">
+                            <h4>Email us</h4>
+                            <p>hello@ersnacks.com</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="form-box">
+                    <form id="reservationForm" onsubmit="handleReservationSubmit(event)">
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label>Full Name *</label>
+                                <input type="text" class="form-control" placeholder="Enter your full name" required
+                                    name="name">
+                            </div>
+                            <div class="form-group">
+                                <label>Email Address *</label>
+                                <input type="email" class="form-control" placeholder="Enter your email address" required
+                                    name="email">
+                            </div>
+                        </div>
+
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label>Expected Guests</label>
+                                <input type="number" id="formGuestInput" class="form-control" value="0" min="1"
+                                    name="guests">
+                            </div>
+                            <div class="form-group">
+                                <label>Event Date & Time</label>
+                                <input type="datetime-local" class="form-control" value="YYYY-MM-DDT00:00" required
+                                    name="datetime">
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label>Special Dietary Needs & Vision</label>
+                            <textarea class="form-control" id="formMessageInput"
+                                placeholder="Tell us about your event theme, dietary requirements, or specific requests..."></textarea>
+                        </div>
+
+                        <button type="submit" class="btn btn-gold" style="width: 100%;">
+                            <span>Confirm & Request Proposal</span>
+                            <i data-lucide="send" style="width: 18px; height: 18px;"></i>
+                        </button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-brand">
+                    <a href="webtask1.html" class="brand">
+                        <div class="brand-logo-icon">G</div>
+                        <span class="brand-name">ER Snacks &amp; Catering</span>
+                    </a>
+                    <p>
+                        Fresh snacks, simple meals, and friendly catering for the moments that matter.
+                    </p>
+                </div>
+
+                <div>
+                    <h4 class="footer-title">Pages</h4>
+                    <ul class="footer-links">
+                        <li><a href="webtask1.html">Home</a></li>
+                        <li><a href="webabout.html">About Heritage</a></li>
+                        <li><a href="webmenu.html">Menu Selection</a></li>
+                        <li><a href="webcon.html">Contact & Reservations</a></li>
+                    </ul>
+                </div>
+
+                <div>
+                    <h4 class="footer-title">Explore</h4>
+                    <ul class="footer-links">
+                        <li><a href="webtask1.html#contact">Reserve Consultation</a></li>
+                        <li><a href="webmenu.html">Full Menu Specials</a></li>
+                        <li><a href="webcon.html">Book Tasting Event</a></li>
+                    </ul>
+                </div>
+
+                <div>
+                    <h4 class="footer-title">Newsletter</h4>
+                    <p style="color: var(--text-secondary); font-size: 0.9rem; margin-bottom: 1rem;">
+                        Receive seasonal menu invitations and culinary insights.
+                    </p>
+                    <div style="display: flex; gap: 0.5rem;">
+                        <input type="email" placeholder="Your email" class="form-control" style="padding: 0.6rem 1rem;">
+                        <button class="btn btn-gold" style="padding: 0.6rem 1rem;"
+                            onclick="showToast('Thanks for joining our updates!')">Join</button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="footer-bottom">
+                <p>&copy; 2026 ER Snacks &amp; Catering. All rights reserved.</p>
+                <div style="display: flex; gap: 1.5rem;">
+                    <a href="#" style="color: var(--text-muted); text-decoration: none;">Privacy Policy</a>
+                    <a href="#" style="color: var(--text-muted); text-decoration: none;">Terms of Service</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <button class="back-to-top" id="backToTop" aria-label="Back to top">
+        <i data-lucide="chevron-up"></i>
+    </button>
+
+    <div class="toast-msg" id="toastMsg">
+        <i data-lucide="check" style="color: var(--gold-base);"></i>
+        <span id="toastText">Action completed successfully!</span>
+    </div>
+
+    <script>
+        lucide.createIcons();
+
+        const scrollProgress = document.getElementById('scroll-progress');
+        const navbar = document.getElementById('navbar');
+        const backToTop = document.getElementById('backToTop');
+
+        window.addEventListener('scroll', () => {
+            const scrollTop = document.documentElement.scrollTop || document.body.scrollTop;
+            const scrollHeight = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+            const scrollPercent = (scrollTop / scrollHeight) * 100;
+
+            if (scrollProgress) scrollProgress.style.width = scrollPercent + '%';
+
+            if (scrollTop > 50) {
+                navbar.classList.add('scrolled');
+            } else {
+                navbar.classList.remove('scrolled');
+            }
+
+            if (scrollTop > 400) {
+                backToTop.classList.add('visible');
+            } else {
+                backToTop.classList.remove('visible');
+            }
+        });
+
+        if (backToTop) {
+            backToTop.addEventListener('click', () => {
+                window.scrollTo({ top: 0, behavior: 'smooth' });
+            });
+        }
+
+        const menuToggle = document.getElementById('menuToggle');
+        const navLinks = document.getElementById('navLinks');
+
+        if (menuToggle && navLinks) {
+            menuToggle.addEventListener('click', () => {
+                navLinks.classList.toggle('open');
+            });
+
+            navLinks.querySelectorAll('a').forEach(link => {
+                link.addEventListener('click', () => {
+                    navLinks.classList.remove('open');
+                });
+            });
+        }
+
+        localStorage.removeItem('luxury-theme');
+        document.documentElement.setAttribute('data-theme', 'light');
+
+        const filterBtns = document.querySelectorAll('.filter-btn');
+        const menuCards = document.querySelectorAll('.menu-card');
+
+        filterBtns.forEach(btn => {
+            btn.addEventListener('click', () => {
+                filterBtns.forEach(b => b.classList.remove('active'));
+                btn.classList.add('active');
+
+                const filter = btn.getAttribute('data-filter');
+                menuCards.forEach(card => {
+                    if (filter === 'all' || card.getAttribute('data-category') === filter) {
+                        card.style.display = 'flex';
+                        card.style.animation = 'fadeIn 0.5s ease forwards';
+                    } else {
+                        card.style.display = 'none';
+                    }
+                });
+            });
+        });
+
+
+        function openQuickOrder(dishName, price) {
+            showToast(`Added "${dishName}" ($${price.toFixed(2)}) to your tasting inquiry!`);
+            const formMessageInput = document.getElementById('formMessageInput');
+            if (formMessageInput) {
+                formMessageInput.value += `\n- Interested in tasting: ${dishName} ($${price.toFixed(2)})`;
+            }
+        }
+
+        function handleReservationSubmit(e) {
+            e.preventDefault();
+            showToast('Thanks! Our team will contact you soon.');
+            e.target.reset();
+        }
+
+        function showToast(message) {
+            const toast = document.getElementById('toastMsg');
+            const toastText = document.getElementById('toastText');
+            if (toast && toastText) {
+                toastText.textContent = message;
+                toast.classList.add('show');
+                setTimeout(() => {
+                    toast.classList.remove('show');
+                }, 3800);
+            }
+        }
+
+        const card3D = document.getElementById('aboutCard');
+        if (card3D) {
+            card3D.addEventListener('mousemove', (e) => {
+                const rect = card3D.getBoundingClientRect();
+                const x = e.clientX - rect.left - rect.width / 2;
+                const y = e.clientY - rect.top - rect.height / 2;
+                const rotateX = -y / 15;
+                const rotateY = x / 15;
+                card3D.style.transform = `perspective(1000px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) scale3d(1.02, 1.02, 1.02)`;
+            });
+
+            card3D.addEventListener('mouseleave', () => {
+                card3D.style.transform = 'perspective(1000px) rotateX(0deg) rotateY(0deg) scale3d(1, 1, 1)';
+            });
+        }
+    </script>
+</body>
+
+</html>

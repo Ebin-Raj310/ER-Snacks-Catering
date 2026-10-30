@@ -1,0 +1,1243 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact ER Catering</title>
+    <meta name="description" content="Contact ER Snacks & Catering to plan fresh food for your next gathering.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700;800;900&family=Plus+Jakarta+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400&family=Playfair+Display:ital,wght@0,400..900;1,400..900&display=swap"
+        rel="stylesheet">
+    <script src="https://unpkg.com/lucide@latest"></script>
+
+    <style>
+        :root {
+            --font-display: 'Plus Jakarta Sans', Arial, sans-serif;
+            --font-serif: 'Plus Jakarta Sans', Arial, sans-serif;
+            --font-body: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, sans-serif;
+
+            --bg-primary: #fffaf3;
+            --bg-surface: #fff1df;
+            --bg-surface-elevated: #ffffff;
+            --bg-glass: rgba(255, 250, 243, 0.94);
+            --border-glass: rgba(102, 68, 44, 0.15);
+            --border-gold: rgba(193, 91, 44, 0.35);
+
+            --text-primary: #3b2922;
+            --text-secondary: #6f5a4f;
+            --text-muted: #927d70;
+
+            --gold-base: #c15b2c;
+            --gold-light: #f7dfb8;
+            --gold-dark: #9f4724;
+            --gold-gradient: linear-gradient(135deg, #dd7e48 0%, #c15b2c 100%);
+            --gold-glow: rgba(193, 91, 44, 0.2);
+
+            --accent-emerald: #5d8a62;
+            --danger: #ef4444;
+
+            --shadow-subtle: 0 8px 24px -10px rgba(91, 53, 33, 0.22);
+            --shadow-glow: 0 0 24px rgba(193, 91, 44, 0.12);
+            --shadow-card: 0 14px 28px -15px rgba(91, 53, 33, 0.28);
+
+            --radius-sm: 8px;
+            --radius-md: 12px;
+            --radius-lg: 18px;
+            --radius-full: 9999px;
+
+            --transition-smooth: all 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+
+        *,
+        *::before,
+        *::after {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            -webkit-tap-highlight-color: transparent;
+        }
+
+        html {
+            scroll-behavior: smooth;
+            font-size: 16px;
+        }
+
+        body {
+            font-family: var(--font-body);
+            background-color: var(--bg-primary);
+            color: var(--text-primary);
+            line-height: 1.6;
+            overflow-x: hidden;
+            transition: background-color 0.4s ease, color 0.4s ease;
+        }
+
+        ::selection {
+            background-color: var(--gold-base);
+            color: #000;
+        }
+
+        #scroll-progress {
+            position: fixed;
+            top: 0;
+            left: 0;
+            height: 3px;
+            background: var(--gold-gradient);
+            z-index: 2000;
+            width: 0%;
+            transition: width 0.1s ease-out;
+            box-shadow: 0 0 10px var(--gold-base);
+        }
+
+        .container {
+            max-width: 1280px;
+            margin: 0 auto;
+            padding: 0 1.5rem;
+        }
+
+        .section {
+            padding: 5.5rem 0;
+            position: relative;
+        }
+
+        .section-tag {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            font-family: var(--font-display);
+            font-size: 0.8rem;
+            font-weight: 700;
+            letter-spacing: 3px;
+            text-transform: uppercase;
+            color: var(--gold-base);
+            padding: 0.35rem 1rem;
+            background: rgba(212, 175, 55, 0.08);
+            border: 1px solid var(--border-gold);
+            border-radius: var(--radius-full);
+            margin-bottom: 1.25rem;
+        }
+
+        .section-title {
+            font-family: var(--font-serif);
+            font-size: clamp(2.2rem, 4.5vw, 3.3rem);
+            font-weight: 700;
+            line-height: 1.2;
+            margin-bottom: 1.25rem;
+            color: var(--text-primary);
+        }
+
+        .section-subtitle {
+            color: var(--text-secondary);
+            font-size: clamp(1rem, 1.8vw, 1.15rem);
+            max-width: 650px;
+            margin-bottom: 3rem;
+        }
+
+        .gold-gradient-text {
+            background: var(--gold-gradient);
+            -webkit-background-clip: text;
+            background-clip: text;
+            -webkit-text-fill-color: transparent;
+            display: inline-block;
+        }
+
+        .navbar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            z-index: 1500;
+            transition: var(--transition-smooth);
+            padding: 1.25rem 0;
+        }
+
+        .navbar.scrolled {
+            background: var(--bg-glass);
+            backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px);
+            padding: 0.85rem 0;
+            border-bottom: 1px solid var(--border-glass);
+            box-shadow: var(--shadow-subtle);
+        }
+
+        .nav-inner {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .brand {
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+            text-decoration: none;
+            color: var(--text-primary);
+        }
+
+        .brand-logo-icon {
+            width: 38px;
+            height: 38px;
+            background: var(--gold-gradient);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #000;
+            font-weight: 900;
+            font-family: var(--font-display);
+            font-size: 1.1rem;
+            box-shadow: var(--shadow-glow);
+        }
+
+        .brand-name {
+            font-family: var(--font-display);
+            font-size: 1.25rem;
+            font-weight: 700;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+        }
+
+        .nav-links {
+            display: flex;
+            align-items: center;
+            list-style: none;
+            gap: 2rem;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: var(--text-secondary);
+            font-size: 0.9rem;
+            font-weight: 600;
+            letter-spacing: 1.5px;
+            text-transform: uppercase;
+            transition: var(--transition-smooth);
+            position: relative;
+            padding: 0.35rem 0;
+        }
+
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: var(--gold-base);
+            transition: var(--transition-smooth);
+        }
+
+        .nav-links a:hover,
+        .nav-links a.active {
+            color: var(--gold-base);
+        }
+
+        .nav-links a:hover::after,
+        .nav-links a.active::after {
+            width: 100%;
+        }
+
+        .nav-actions {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.6rem;
+            font-family: var(--font-body);
+            font-size: 0.88rem;
+            font-weight: 700;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            padding: 0.75rem 1.6rem;
+            border-radius: var(--radius-full);
+            text-decoration: none;
+            cursor: pointer;
+            transition: var(--transition-smooth);
+            border: none;
+        }
+
+        .btn-gold {
+            background: var(--gold-gradient);
+            color: #000;
+            box-shadow: 0 4px 18px rgba(212, 175, 55, 0.35);
+        }
+
+        .btn-gold:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 25px rgba(212, 175, 55, 0.5);
+        }
+
+        .btn-outline {
+            background: transparent;
+            color: var(--text-primary);
+            border: 1px solid var(--border-gold);
+        }
+
+        .btn-outline:hover {
+            background: rgba(212, 175, 55, 0.1);
+            border-color: var(--gold-base);
+            color: var(--gold-base);
+            transform: translateY(-2px);
+        }
+
+
+
+        .nav-toggle-btn {
+            display: none;
+            background: var(--bg-surface-elevated);
+            border: 1px solid var(--border-glass);
+            color: var(--text-primary);
+            width: 42px;
+            height: 42px;
+            border-radius: var(--radius-sm);
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+        }
+
+        .page-hero {
+            padding-top: 10rem;
+            padding-bottom: 4rem;
+            position: relative;
+            text-align: center;
+            background: radial-gradient(circle at 50% 30%, rgba(212, 175, 55, 0.08) 0%, transparent 65%);
+        }
+
+        .page-hero-title {
+            font-family: var(--font-serif);
+            font-size: clamp(2.5rem, 6vw, 4.2rem);
+            font-weight: 700;
+            line-height: 1.15;
+            margin-bottom: 1.25rem;
+        }
+
+        .page-hero-desc {
+            color: var(--text-secondary);
+            font-size: 1.15rem;
+            max-width: 720px;
+            margin: 0 auto;
+            line-height: 1.8;
+        }
+
+        .info-cards-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+            gap: 1.75rem;
+            margin-bottom: 4rem;
+        }
+
+        .info-card {
+            background: var(--bg-surface);
+            border: 1px solid var(--border-glass);
+            border-radius: var(--radius-lg);
+            padding: 2.2rem 1.8rem;
+            text-align: center;
+            transition: var(--transition-smooth);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .info-card:hover {
+            transform: translateY(-6px);
+            border-color: var(--border-gold);
+            box-shadow: var(--shadow-card);
+        }
+
+        .info-icon {
+            width: 56px;
+            height: 56px;
+            border-radius: 50%;
+            background: rgba(212, 175, 55, 0.12);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--gold-base);
+            margin-bottom: 1.25rem;
+            border: 1px solid var(--border-gold);
+        }
+
+        .info-card h4 {
+            font-family: var(--font-display);
+            font-size: 1rem;
+            letter-spacing: 1.5px;
+            text-transform: uppercase;
+            color: var(--gold-base);
+            margin-bottom: 0.5rem;
+        }
+
+        .info-card p {
+            color: var(--text-primary);
+            font-weight: 600;
+            font-size: 1.05rem;
+            margin-bottom: 0.25rem;
+        }
+
+        .info-card span {
+            color: var(--text-muted);
+            font-size: 0.85rem;
+        }
+
+        .contact-layout {
+            display: grid;
+            grid-template-columns: 1.2fr 0.8fr;
+            gap: 4rem;
+            align-items: flex-start;
+        }
+
+        .form-card {
+            background: var(--bg-surface);
+            border: 1px solid var(--border-glass);
+            border-radius: var(--radius-lg);
+            padding: 3rem 2.5rem;
+            box-shadow: var(--shadow-card);
+            position: relative;
+        }
+
+        .form-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 4px;
+            background: var(--gold-gradient);
+            border-radius: var(--radius-lg) var(--radius-lg) 0 0;
+        }
+
+        .form-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1.5rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .form-group {
+            display: flex;
+            flex-direction: column;
+            gap: 0.5rem;
+        }
+
+        .form-group.full-width {
+            grid-column: 1 / -1;
+        }
+
+        .form-label {
+            font-size: 0.88rem;
+            font-weight: 600;
+            color: var(--text-secondary);
+            letter-spacing: 0.5px;
+            display: flex;
+            align-items: center;
+            gap: 0.4rem;
+        }
+
+        .form-control {
+            background: var(--bg-surface-elevated);
+            border: 1px solid var(--border-glass);
+            border-radius: var(--radius-sm);
+            padding: 0.9rem 1.2rem;
+            color: var(--text-primary);
+            font-family: var(--font-body);
+            font-size: 0.95rem;
+            outline: none;
+            transition: var(--transition-smooth);
+            width: 100%;
+        }
+
+        .form-control:focus {
+            border-color: var(--gold-base);
+            box-shadow: 0 0 0 3px rgba(212, 175, 55, 0.15);
+        }
+
+        textarea.form-control {
+            resize: vertical;
+            min-height: 120px;
+        }
+
+        .pill-group {
+            display: flex;
+            gap: 0.6rem;
+            flex-wrap: wrap;
+            margin-top: 0.25rem;
+        }
+
+        .pill-option {
+            padding: 0.55rem 1.1rem;
+            border-radius: var(--radius-full);
+            background: var(--bg-surface-elevated);
+            border: 1px solid var(--border-glass);
+            color: var(--text-secondary);
+            font-size: 0.85rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: var(--transition-smooth);
+        }
+
+        .pill-option.active,
+        .pill-option:hover {
+            border-color: var(--gold-base);
+            color: var(--gold-base);
+            background: rgba(212, 175, 55, 0.08);
+        }
+
+        .pill-option.active {
+            background: var(--gold-base);
+            color: #000;
+            font-weight: 700;
+        }
+
+        .range-container {
+            display: flex;
+            align-items: center;
+            gap: 1.25rem;
+            margin-top: 0.4rem;
+        }
+
+        .range-slider {
+            flex: 1;
+            accent-color: var(--gold-base);
+            height: 6px;
+            cursor: pointer;
+        }
+
+        .range-val {
+            font-family: var(--font-display);
+            font-size: 1.1rem;
+            font-weight: 700;
+            color: var(--gold-base);
+            min-width: 90px;
+            text-align: right;
+        }
+
+        .faq-container {
+            display: flex;
+            flex-direction: column;
+            gap: 1.25rem;
+        }
+
+        .faq-card {
+            background: var(--bg-surface);
+            border: 1px solid var(--border-glass);
+            border-radius: var(--radius-md);
+            overflow: hidden;
+            transition: var(--transition-smooth);
+        }
+
+        .faq-card:hover {
+            border-color: var(--border-gold);
+        }
+
+        .faq-header {
+            padding: 1.35rem 1.5rem;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            font-family: var(--font-serif);
+            font-size: 1.1rem;
+            font-weight: 600;
+            color: var(--text-primary);
+            transition: var(--transition-smooth);
+            user-select: none;
+        }
+
+        .faq-header i {
+            color: var(--gold-base);
+            transition: transform 0.3s ease;
+        }
+
+        .faq-card.open .faq-header i {
+            transform: rotate(180deg);
+        }
+
+        .faq-body {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.4s ease, padding 0.3s ease;
+            color: var(--text-secondary);
+            font-size: 0.92rem;
+            line-height: 1.7;
+            padding: 0 1.5rem;
+        }
+
+        .faq-card.open .faq-body {
+            max-height: 250px;
+            padding: 0 1.5rem 1.35rem;
+        }
+
+        /* Location Atelier Card */
+        .location-card {
+            background: var(--bg-surface);
+            border: 1px solid var(--border-glass);
+            border-radius: var(--radius-lg);
+            padding: 2rem;
+            margin-top: 2rem;
+        }
+
+        .location-card h4 {
+            font-family: var(--font-serif);
+            font-size: 1.25rem;
+            margin-bottom: 0.75rem;
+            color: var(--text-primary);
+        }
+
+        .location-card p {
+            color: var(--text-secondary);
+            font-size: 0.95rem;
+            line-height: 1.6;
+            margin-bottom: 1.25rem;
+        }
+
+        footer {
+            background: var(--bg-surface);
+            border-top: 1px solid var(--border-glass);
+            padding: 5rem 0 2.5rem;
+            margin-top: 5rem;
+        }
+
+        .footer-grid {
+            display: grid;
+            grid-template-columns: 2fr 1fr 1fr 1.5fr;
+            gap: 3.5rem;
+            margin-bottom: 3.5rem;
+        }
+
+        .footer-title {
+            font-family: var(--font-display);
+            font-size: 1rem;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            color: var(--gold-base);
+            margin-bottom: 1.5rem;
+        }
+
+        .footer-links {
+            list-style: none;
+            display: flex;
+            flex-direction: column;
+            gap: 0.85rem;
+        }
+
+        .footer-links a {
+            color: var(--text-secondary);
+            text-decoration: none;
+            font-size: 0.95rem;
+            transition: var(--transition-smooth);
+        }
+
+        .footer-links a:hover {
+            color: var(--gold-base);
+            padding-left: 5px;
+        }
+
+        .footer-bottom {
+            padding-top: 2rem;
+            border-top: 1px solid var(--border-glass);
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            color: var(--text-muted);
+            font-size: 0.88rem;
+        }
+
+        .back-to-top {
+            position: fixed;
+            bottom: 2rem;
+            right: 2rem;
+            width: 48px;
+            height: 48px;
+            border-radius: 50%;
+            background: var(--bg-surface-elevated);
+            border: 1px solid var(--border-gold);
+            color: var(--gold-base);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            opacity: 0;
+            visibility: hidden;
+            transition: var(--transition-smooth);
+            z-index: 900;
+        }
+
+        .back-to-top.visible {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        .back-to-top:hover {
+            background: var(--gold-base);
+            color: #000;
+            transform: translateY(-3px);
+        }
+
+        .toast-msg {
+            position: fixed;
+            bottom: 2rem;
+            left: 50%;
+            transform: translateX(-50%) translateY(100px);
+            background: var(--bg-surface-elevated);
+            border: 1px solid var(--border-gold);
+            color: var(--text-primary);
+            padding: 0.9rem 1.8rem;
+            border-radius: var(--radius-full);
+            box-shadow: var(--shadow-card);
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+            z-index: 3000;
+            opacity: 0;
+            pointer-events: none;
+            transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+
+        .toast-msg.show {
+            transform: translateX(-50%) translateY(0);
+            opacity: 1;
+        }
+
+        @media (max-width: 992px) {
+            .contact-layout {
+                grid-template-columns: 1fr;
+                gap: 3.5rem;
+            }
+
+            .footer-grid {
+                grid-template-columns: 1fr 1fr;
+                gap: 2.5rem;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .nav-toggle-btn {
+                display: flex;
+            }
+
+            .nav-links {
+                position: fixed;
+                top: 0;
+                right: -100%;
+                width: 80%;
+                max-width: 320px;
+                height: 100vh;
+                background: var(--bg-surface);
+                flex-direction: column;
+                justify-content: center;
+                gap: 2rem;
+                padding: 2rem;
+                transition: var(--transition-smooth);
+                box-shadow: -10px 0 30px rgba(0, 0, 0, 0.8);
+                border-left: 1px solid var(--border-glass);
+            }
+
+            .nav-links.open {
+                right: 0;
+            }
+
+            .form-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .form-card {
+                padding: 2rem 1.5rem;
+            }
+
+            .footer-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .footer-bottom {
+                flex-direction: column;
+                gap: 1rem;
+                text-align: center;
+            }
+        }
+
+        /* Keep contact details personal and easy to read, not like a luxury template. */
+        .navbar.scrolled {
+            background: var(--bg-glass);
+            box-shadow: var(--shadow-subtle);
+        }
+
+        .brand-name,
+        .section-tag,
+        .footer-title {
+            letter-spacing: .8px;
+        }
+
+        .page-hero {
+            background: radial-gradient(circle at 50% 0%, #fff1df, transparent 63%);
+        }
+
+        .page-hero-title {
+            letter-spacing: -1.2px;
+            font-weight: 750;
+        }
+
+        .gold-gradient-text {
+            background: none;
+            -webkit-text-fill-color: currentColor;
+            color: var(--gold-base);
+        }
+
+        .info-card,
+        .form-card,
+        .faq-card,
+        .location-card {
+            box-shadow: none;
+        }
+
+        .info-card:hover,
+        .faq-card:hover {
+            transform: translateY(-3px);
+        }
+
+        .btn {
+            text-transform: none;
+            letter-spacing: .3px;
+        }
+
+        .btn-gold {
+            color: #fff;
+            box-shadow: none;
+        }
+
+        .pill-option {
+            text-transform: none;
+            letter-spacing: 0;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div id="scroll-progress"></div>
+
+    <header class="navbar" id="navbar">
+        <div class="container nav-inner">
+            <a href="webtask1.html" class="brand">
+                <div class="brand-logo-icon">E</div>
+                <span class="brand-name">ER Snacks &amp; Catering</span>
+            </a>
+
+            <ul class="nav-links" id="navLinks">
+                <li><a href="webtask1.html">Home</a></li>
+                <li><a href="webabout.html">About</a></li>
+                <li><a href="webmenu.html">Menu</a></li>
+                <li><a href="webcon.html" class="active">Contact</a></li>
+            </ul>
+
+            <div class="nav-actions">
+
+
+                <a href="webcon.html" class="btn btn-gold"
+                    style="display: none; @media(min-width:768px){display:inline-flex;}">Book Event</a>
+
+                <button class="nav-toggle-btn" id="menuToggle" aria-label="Toggle Menu">
+                    <i data-lucide="menu"></i>
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <section class="page-hero">
+        <div class="container">
+            <div class="section-tag">
+                <i data-lucide="calendar" style="width: 16px; height: 16px; color: var(--gold-base);"></i>
+                <span>LET'S PLAN YOUR ORDER</span>
+            </div>
+            <h1 class="page-hero-title">
+                Let’s make your <span class="gold-gradient-text">gathering easy</span>
+            </h1>
+            <p class="page-hero-desc">
+                Whether it is a birthday, office lunch, family meal, or small celebration, tell us what you need and
+                we will help you choose food that works for your guests.
+            </p>
+        </div>
+    </section>
+
+    <section class="section" style="padding-top: 0; padding-bottom: 2rem;">
+        <div class="container">
+            <div class="info-cards-grid">
+                <div class="info-card">
+                    <div class="info-icon">
+                        <i data-lucide="map-pin"></i>
+                    </div>
+                    <h4>Our kitchen</h4>
+                    <p>Serving our local community</p>
+                    <span>Fresh food, made nearby</span>
+                </div>
+
+                <div class="info-card">
+                    <div class="info-icon">
+                        <i data-lucide="phone-call"></i>
+                    </div>
+                    <h4>Call us</h4>
+                    <p>+1 (555) 123-4567</p>
+                    <span>We are happy to help</span>
+                </div>
+
+                <div class="info-card">
+                    <div class="info-icon">
+                        <i data-lucide="mail"></i>
+                    </div>
+                    <h4>Email us</h4>
+                    <p>hello@ersnacks.com</p>
+                    <span>We will reply as soon as we can</span>
+                </div>
+
+                <div class="info-card">
+                    <div class="info-icon">
+                        <i data-lucide="clock"></i>
+                    </div>
+                    <h4>Hours</h4>
+                    <p>Mon - Sat: 9AM - 8PM</p>
+                    <span>Orders by appointment</span>
+                </div>
+            </div>
+        </div>
+    </section>
+    <section class="section" style="padding-top: 1rem;">
+        <div class="container">
+            <div class="contact-layout">
+                <div class="form-card">
+                    <div style="margin-bottom: 2rem;">
+                        <div class="section-tag" style="margin-bottom: 0.75rem;">
+                            <i data-lucide="sparkles" style="width: 14px; height: 14px;"></i>
+                            <span>ORDER REQUEST</span>
+                        </div>
+                        <h2 style="font-family: var(--font-serif); font-size: 2rem; margin-bottom: 0.5rem;">
+                            Request an <span class="gold-gradient-text">order quote</span>
+                        </h2>
+                        <p style="color: var(--text-secondary); font-size: 0.95rem;">
+                            Share a few details and our team will help with a menu and price that suits your plan.
+                        </p>
+                    </div>
+
+                    <form id="reservationForm" onsubmit="handleReservationSubmit(event)">
+                        <div class="form-grid">
+                            <div class="form-group">
+                                <label class="form-label" for="clientName">
+                                    <i data-lucide="user" style="width: 16px; height: 16px;"></i> Full Name *
+                                </label>
+                                <input type="text" id="clientName" class="form-control" placeholder="Enter your Name"
+                                    required>
+                            </div>
+
+                            <div class="form-group">
+                                <label class="form-label" for="clientEmail">
+                                    <i data-lucide="mail" style="width: 16px; height: 16px;"></i> Email Address *
+                                </label>
+                                <input type="email" id="clientEmail" class="form-control"
+                                    placeholder="Enter your Email Address" required>
+                            </div>
+
+                            <div class="form-group">
+                                <label class="form-label" for="clientPhone">
+                                    <i data-lucide="phone" style="width: 16px; height: 16px;"></i> Phone Number *
+                                </label>
+                                <input type="tel" id="clientPhone" class="form-control"
+                                    placeholder="Enter your Phone Number" required>
+                            </div>
+
+                            <div class="form-group">
+                                <label class="form-label" for="eventDate">
+                                    <i data-lucide="calendar" style="width: 16px; height: 16px;"></i> Event Date & Time
+                                    *
+                                </label>
+                                <input type="datetime-local" id="eventDate" class="form-control"
+                                    value="2026-10-15T19:00" required>
+                            </div>
+
+                            <div class="form-group full-width">
+                                <label class="form-label">
+                                    <i data-lucide="award" style="width: 16px; height: 16px;"></i> Event Category
+                                </label>
+                                <div class="pill-group" id="eventTypeGroup">
+                                    <button type="button" class="pill-option active"
+                                        data-type="Wedding">Wedding</button>
+                                    <button type="button" class="pill-option" data-type="Party">Birthday party</button>
+                                    <button type="button" class="pill-option" data-type="Office">Office lunch</button>
+                                    <button type="button" class="pill-option" data-type="Family">Family
+                                        gathering</button>
+                                </div>
+                            </div>
+
+                            <div class="form-group full-width">
+                                <label class="form-label">
+                                    <i data-lucide="users" style="width: 16px; height: 16px;"></i> Estimated Guest Count
+                                </label>
+                                <div class="range-container">
+                                    <input type="range" id="guestSlider" class="range-slider" min="10" max="500"
+                                        step="5" value="75">
+                                    <div class="range-val" id="guestValDisplay">75 Guests</div>
+                                </div>
+                            </div>
+
+                            <div class="form-group full-width">
+                                <label class="form-label" for="specialNotes">
+                                    <i data-lucide="message-square" style="width: 16px; height: 16px;"></i> Special
+                                    Requests & Dietary Needs
+                                </label>
+                                <textarea id="specialNotes" class="form-control"
+                                    placeholder="Tell us about favourite dishes, dietary needs, allergies, and anything else we should know..."></textarea>
+                            </div>
+                        </div>
+
+                        <button type="submit" class="btn btn-gold" style="width: 100%; padding: 1rem; font-size: 1rem;">
+                            <i data-lucide="send" style="width: 18px; height: 18px;"></i>
+                            <span>Send Order Request</span>
+                        </button>
+                    </form>
+                </div>
+
+                <div>
+                    <div style="margin-bottom: 1.75rem;">
+                        <div class="section-tag" style="margin-bottom: 0.75rem;">
+                            <i data-lucide="help-circle" style="width: 14px; height: 14px;"></i>
+                            <span>FREQUENT INQUIRIES</span>
+                        </div>
+                        <h3 style="font-family: var(--font-serif); font-size: 1.8rem;">
+                            Everything You Need to <span class="gold-gradient-text">Know</span>
+                        </h3>
+                    </div>
+
+                    <div class="faq-container">
+                        <div class="faq-card open">
+                            <div class="faq-header" onclick="toggleFaq(this)">
+                                <span>What is the advance booking timeframe?</span>
+                                <i data-lucide="chevron-down"></i>
+                            </div>
+                            <div class="faq-body">
+                                For larger events, please contact us as early as you can. For smaller orders, we will
+                                always try to help when our schedule allows.
+                            </div>
+                        </div>
+
+                        <div class="faq-card">
+                            <div class="faq-header" onclick="toggleFaq(this)">
+                                <span>Do you host private menu tasting sessions?</span>
+                                <i data-lucide="chevron-down"></i>
+                            </div>
+                            <div class="faq-body">
+                                Ask us about tasting options when you contact us. We can discuss the best way to help
+                                you feel confident about your menu.
+                            </div>
+                        </div>
+
+                        <div class="faq-card">
+                            <div class="faq-header" onclick="toggleFaq(this)">
+                                <span>How do you handle dietary requirements?</span>
+                                <i data-lucide="chevron-down"></i>
+                            </div>
+                            <div class="faq-body">
+                                Please include dietary requirements and allergies in your request. We will clearly
+                                explain the options available for your order.
+                            </div>
+                        </div>
+
+                        <div class="faq-card">
+                            <div class="faq-header" onclick="toggleFaq(this)">
+                                <span>What staff and tableware are included?</span>
+                                <i data-lucide="chevron-down"></i>
+                            </div>
+                            <div class="faq-body">
+                                Every order is different. We will outline what is included, from food and packing to
+                                delivery or serving help, before you confirm.
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="location-card">
+                        <h4>A helpful team, ready to listen</h4>
+                        <p>
+                            Contact us with your date, guest count, and food ideas. We will work with you to make the
+                            meal feel right for the people you are bringing together.
+                        </p>
+                        <div style="display: flex; gap: 1rem; flex-wrap: wrap;">
+                            <a href="tel:+15551234567" class="btn btn-outline"
+                                style="padding: 0.5rem 1.2rem; font-size: 0.82rem;">
+                                <i data-lucide="phone" style="width: 14px; height: 14px;"></i>
+                                <span>Call us</span>
+                            </a>
+                            <a href="mailto:hello@ersnacks.com" class="btn btn-outline"
+                                style="padding: 0.5rem 1.2rem; font-size: 0.82rem;">
+                                <i data-lucide="mail" style="width: 14px; height: 14px;"></i>
+                                <span>Email us</span>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <div class="container">
+            <div class="footer-grid">
+                <div>
+                    <div class="brand" style="margin-bottom: 1.25rem;">
+                        <div class="brand-logo-icon">G</div>
+                        <span class="brand-name">ER Snacks &amp; Catering</span>
+                    </div>
+                    <p style="color: var(--text-secondary); font-size: 0.95rem; line-height: 1.7; max-width: 320px;">
+                        Fresh snacks, simple meals, and friendly catering for the moments that matter.
+                    </p>
+                </div>
+
+                <div>
+                    <h4 class="footer-title">Pages</h4>
+                    <ul class="footer-links">
+                        <li><a href="webtask1.html">Home</a></li>
+                        <li><a href="webabout.html">About Heritage</a></li>
+                        <li><a href="webmenu.html">Menu Selection</a></li>
+                        <li><a href="webcon.html">Contact & Reservations</a></li>
+                    </ul>
+                </div>
+
+                <div>
+                    <h4 class="footer-title">Explore</h4>
+                    <ul class="footer-links">
+                        <li><a href="webtask1.html#calculator">Quote Estimator</a></li>
+                        <li><a href="webmenu.html">Full Menu Specials</a></li>
+                        <li><a href="webcon.html">Book Tasting Event</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 class="footer-title">Newsletter</h4>
+                    <p style="color: var(--text-secondary); font-size: 0.9rem; margin-bottom: 1rem;">
+                        Receive seasonal menu invitations and culinary insights.
+                    </p>
+                    <div style="display: flex; gap: 0.5rem;">
+                        <input type="email" placeholder="Your email" id="newsletterEmail"
+                            style="padding: 0.6rem 1rem; border-radius: var(--radius-full); border: 1px solid var(--border-glass); background: var(--bg-surface-elevated); color: var(--text-primary); outline: none; width: 100%;">
+                        <button class="btn btn-gold" style="padding: 0.6rem 1.2rem;"
+                            onclick="handleSubscribe()">Join</button>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2026 ER Snacks &amp; Catering. All rights reserved.</p>
+                <div style="display: flex; gap: 1.5rem;">
+                    <a href="#" style="color: var(--text-muted); text-decoration: none;">Privacy Policy</a>
+                    <a href="#" style="color: var(--text-muted); text-decoration: none;">Terms of Service</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+    <button class="back-to-top" id="backToTop" aria-label="Back to top">
+        <i data-lucide="chevron-up"></i>
+    </button>
+    <div class="toast-msg" id="toastMsg">
+        <i data-lucide="check-circle" style="color: var(--gold-base);"></i>
+        <span id="toastText">Action completed successfully!</span>
+    </div>
+    <script>
+        lucide.createIcons();
+        localStorage.removeItem('luxury-theme');
+        document.documentElement.setAttribute('data-theme', 'light');
+        const scrollProgress = document.getElementById('scroll-progress');
+        const navbar = document.getElementById('navbar');
+        const backToTop = document.getElementById('backToTop');
+        window.addEventListener('scroll', () => {
+            const scrollTop = document.documentElement.scrollTop || document.body.scrollTop;
+            const scrollHeight = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+            const scrollPercent = (scrollTop / scrollHeight) * 100;
+            if (scrollProgress) scrollProgress.style.width = scrollPercent + '%';
+            if (scrollTop > 50) {
+                navbar.classList.add('scrolled');
+            } else {
+                navbar.classList.remove('scrolled');
+            }
+            if (scrollTop > 400) {
+                backToTop.classList.add('visible');
+            } else {
+                backToTop.classList.remove('visible');
+            }
+        });
+        if (backToTop) {
+            backToTop.addEventListener('click', () => {
+                window.scrollTo({ top: 0, behavior: 'smooth' });
+            });
+        }
+        const menuToggle = document.getElementById('menuToggle');
+        const navLinks = document.getElementById('navLinks');
+
+        if (menuToggle && navLinks) {
+            menuToggle.addEventListener('click', () => {
+                navLinks.classList.toggle('open');
+            });
+            navLinks.querySelectorAll('a').forEach(link => {
+                link.addEventListener('click', () => {
+                    navLinks.classList.remove('open');
+                });
+            });
+        }
+        const guestSlider = document.getElementById('guestSlider');
+        const guestValDisplay = document.getElementById('guestValDisplay');
+
+        if (guestSlider && guestValDisplay) {
+            guestSlider.addEventListener('input', () => {
+                guestValDisplay.textContent = `${guestSlider.value} Guests`;
+            });
+        }
+        const eventTypeGroup = document.getElementById('eventTypeGroup');
+        if (eventTypeGroup) {
+            eventTypeGroup.querySelectorAll('.pill-option').forEach(btn => {
+                btn.addEventListener('click', () => {
+                    eventTypeGroup.querySelectorAll('.pill-option').forEach(b => b.classList.remove('active'));
+                    btn.classList.add('active');
+                });
+            });
+        }
+        function toggleFaq(headerEl) {
+            const card = headerEl.parentElement;
+            const isOpen = card.classList.contains('open');
+
+            document.querySelectorAll('.faq-card').forEach(c => c.classList.remove('open'));
+            if (!isOpen) {
+                card.classList.add('open');
+            }
+        }
+        function handleReservationSubmit(e) {
+            e.preventDefault();
+            const name = document.getElementById('clientName').value;
+            const guests = guestSlider.value;
+            const activeType = document.querySelector('#eventTypeGroup .pill-option.active').textContent;
+
+            showToast(`Thank you, ${name}! Proposal for ${guests} guests (${activeType}) requested.`);
+            e.target.reset();
+            guestValDisplay.textContent = `75 Guests`;
+        }
+        function handleSubscribe() {
+            const input = document.getElementById('newsletterEmail');
+            if (input && input.value.trim() !== '') {
+                showToast(`Thank you! ${input.value} is now subscribed for updates.`);
+                input.value = '';
+            } else {
+                showToast('Please enter a valid email address.');
+            }
+        }
+        function showToast(message) {
+            const toast = document.getElementById('toastMsg');
+            const toastText = document.getElementById('toastText');
+            if (toast && toastText) {
+                toastText.textContent = message;
+                toast.classList.add('show');
+                setTimeout(() => {
+                    toast.classList.remove('show');
+                }, 3800);
+            }
+        }
+    </script>
+</body>
+
+</html>

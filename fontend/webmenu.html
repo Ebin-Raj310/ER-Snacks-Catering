@@ -1,0 +1,1601 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Menu ER Catering</title>
+    <meta name="description" content="Browse fresh snacks, meals, and catering favourites from ER Snacks & Catering.">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700;800;900&family=Plus+Jakarta+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400&family=Playfair+Display:ital,wght@0,400..900;1,400..900&display=swap"
+        rel="stylesheet">
+
+    <script src="https://unpkg.com/lucide@latest"></script>
+
+    <style>
+        :root {
+            --font-display: 'Plus Jakarta Sans', Arial, sans-serif;
+            --font-serif: 'Plus Jakarta Sans', Arial, sans-serif;
+            --font-body: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, sans-serif;
+            --bg-primary: #f5dfbf;
+            --bg-surface: #fff1df;
+            --bg-surface-elevated: #ffffff;
+            --bg-glass: rgba(255, 250, 243, 0.94);
+            --border-glass: rgba(102, 68, 44, 0.15);
+            --border-gold: rgba(193, 91, 44, 0.35);
+            --text-primary: #3b2922;
+            --text-secondary: #6f5a4f;
+            --text-muted: #927d70;
+            --gold-base: #c15b2c;
+            --gold-light: #f7dfb8;
+            --gold-dark: #9f4724;
+            --gold-gradient: linear-gradient(135deg, #dd7e48 0%, #c15b2c 100%);
+            --gold-glow: rgba(193, 91, 44, 0.2);
+            --accent-emerald: #5d8a62;
+            --danger: #ef4444;
+            --shadow-subtle: 0 8px 24px -10px rgba(91, 53, 33, 0.22);
+            --shadow-glow: 0 0 24px rgba(193, 91, 44, 0.12);
+            --shadow-card: 0 14px 28px -15px rgba(91, 53, 33, 0.28);
+            --radius-sm: 8px;
+            --radius-md: 12px;
+            --radius-lg: 18px;
+            --radius-full: 9999px;
+            --transition-smooth: all 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+
+
+
+        *,
+        *::before,
+        *::after {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            -webkit-tap-highlight-color: transparent;
+        }
+
+        html {
+            scroll-behavior: smooth;
+            font-size: 16px;
+        }
+
+        body {
+            font-family: var(--font-body);
+            background-color: var(--bg-primary);
+            color: var(--text-primary);
+            line-height: 1.6;
+            overflow-x: hidden;
+            transition: background-color 0.4s ease, color 0.4s ease;
+        }
+
+        ::selection {
+            background-color: var(--gold-base);
+            color: #000;
+        }
+
+        #scroll-progress {
+            position: fixed;
+            top: 0;
+            left: 0;
+            height: 3px;
+            background: var(--gold-gradient);
+            z-index: 2000;
+            width: 0%;
+            transition: width 0.1s ease-out;
+            box-shadow: 0 0 10px var(--gold-base);
+        }
+
+        .container {
+            max-width: 1280px;
+            margin: 0 auto;
+            padding: 0 1.5rem;
+        }
+
+        .section {
+            padding: 5.5rem 0;
+            position: relative;
+        }
+
+        .section-tag {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            font-family: var(--font-display);
+            font-size: 0.8rem;
+            font-weight: 700;
+            letter-spacing: 3px;
+            text-transform: uppercase;
+            color: var(--gold-base);
+            padding: 0.35rem 1rem;
+            background: rgba(212, 175, 55, 0.08);
+            border: 1px solid var(--border-gold);
+            border-radius: var(--radius-full);
+            margin-bottom: 1.25rem;
+        }
+
+        .section-title {
+            font-family: var(--font-serif);
+            font-size: clamp(2.2rem, 4.5vw, 3.3rem);
+            font-weight: 700;
+            line-height: 1.2;
+            margin-bottom: 1.25rem;
+            color: var(--text-primary);
+        }
+
+        .section-subtitle {
+            color: var(--text-secondary);
+            font-size: clamp(1rem, 1.8vw, 1.15rem);
+            max-width: 650px;
+            margin-bottom: 3rem;
+        }
+
+        .gold-gradient-text {
+            background: var(--gold-gradient);
+            -webkit-background-clip: text;
+            background-clip: text;
+            -webkit-text-fill-color: transparent;
+            display: inline-block;
+        }
+
+        .navbar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            z-index: 1500;
+            transition: var(--transition-smooth);
+            padding: 1.25rem 0;
+        }
+
+        .navbar.scrolled {
+            background: var(--bg-glass);
+            backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px);
+            padding: 0.85rem 0;
+            border-bottom: 1px solid var(--border-glass);
+            box-shadow: var(--shadow-subtle);
+        }
+
+        .nav-inner {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .brand {
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+            text-decoration: none;
+            color: var(--text-primary);
+        }
+
+        .brand-logo-icon {
+            width: 38px;
+            height: 38px;
+            background: var(--gold-gradient);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #000;
+            font-weight: 900;
+            font-family: var(--font-display);
+            font-size: 1.1rem;
+            box-shadow: var(--shadow-glow);
+        }
+
+        .brand-name {
+            font-family: var(--font-display);
+            font-size: 1.25rem;
+            font-weight: 700;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+        }
+
+        .nav-links {
+            display: flex;
+            align-items: center;
+            list-style: none;
+            gap: 2rem;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: var(--text-secondary);
+            font-size: 0.9rem;
+            font-weight: 600;
+            letter-spacing: 1.5px;
+            text-transform: uppercase;
+            transition: var(--transition-smooth);
+            position: relative;
+            padding: 0.35rem 0;
+        }
+
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: var(--gold-base);
+            transition: var(--transition-smooth);
+        }
+
+        .nav-links a:hover,
+        .nav-links a.active {
+            color: var(--gold-base);
+        }
+
+        .nav-links a:hover::after,
+        .nav-links a.active::after {
+            width: 100%;
+        }
+
+        .nav-actions {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.6rem;
+            font-family: var(--font-body);
+            font-size: 0.88rem;
+            font-weight: 700;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            padding: 0.75rem 1.6rem;
+            border-radius: var(--radius-full);
+            text-decoration: none;
+            cursor: pointer;
+            transition: var(--transition-smooth);
+            border: none;
+        }
+
+        .btn-gold {
+            background: var(--gold-gradient);
+            color: #000;
+            box-shadow: 0 4px 18px rgba(212, 175, 55, 0.35);
+        }
+
+        .btn-gold:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 25px rgba(212, 175, 55, 0.5);
+        }
+
+        .btn-outline {
+            background: transparent;
+            color: var(--text-primary);
+            border: 1px solid var(--border-gold);
+        }
+
+        .btn-outline:hover {
+            background: rgba(212, 175, 55, 0.1);
+            border-color: var(--gold-base);
+            color: black;
+            transform: translateY(-2px);
+        }
+
+
+
+        .nav-toggle-btn {
+            display: none;
+            background: var(--bg-surface-elevated);
+            border: 1px solid var(--border-glass);
+            color: var(--text-primary);
+            width: 42px;
+            height: 42px;
+            border-radius: var(--radius-sm);
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+        }
+
+        .page-hero {
+            padding-top: 10rem;
+            padding-bottom: 4rem;
+            position: relative;
+            text-align: center;
+            background: radial-gradient(circle at 50% 30%, rgba(212, 175, 55, 0.08) 0%, transparent 65%);
+        }
+
+        .page-hero-title {
+            font-family: var(--font-serif);
+            font-size: clamp(2.5rem, 6vw, 4.2rem);
+            font-weight: 700;
+            line-height: 1.15;
+            margin-bottom: 1.25rem;
+        }
+
+        .page-hero-desc {
+            color: var(--text-secondary);
+            font-size: 1.15rem;
+            max-width: 720px;
+            margin: 0 auto;
+            line-height: 1.8;
+        }
+
+        .filter-container {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.75rem;
+            flex-wrap: wrap;
+            margin-bottom: 3.5rem;
+        }
+
+        .filter-btn {
+            padding: 0.65rem 1.4rem;
+            border-radius: var(--radius-full);
+            background: var(--bg-surface-elevated);
+            border: 1px solid var(--border-glass);
+            color: var(--text-secondary);
+            font-family: var(--font-body);
+            font-size: 0.85rem;
+            font-weight: 600;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            cursor: pointer;
+            transition: var(--transition-smooth);
+        }
+
+        .filter-btn:hover {
+            border-color: var(--gold-base);
+            color: var(--gold-base);
+        }
+
+        .filter-btn.active {
+            background: var(--gold-gradient);
+            color: #000;
+            font-weight: 700;
+            border-color: transparent;
+            box-shadow: 0 4px 15px rgba(212, 175, 55, 0.3);
+        }
+
+        .menu-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(360px, 1fr));
+            gap: 2rem;
+        }
+
+        .menu-card {
+            background: var(--bg-surface);
+            border: 1px solid var(--border-glass);
+            border-radius: var(--radius-lg);
+            padding: 2rem;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            transition: var(--transition-smooth);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .menu-card:hover {
+            transform: translateY(-6px);
+            border-color: var(--border-gold);
+            box-shadow: var(--shadow-card);
+        }
+
+        .menu-card.has-image {
+            padding: 0;
+        }
+
+        .card-image-wrap {
+            position: relative;
+            height: 230px;
+            overflow: hidden;
+            width: 100%;
+        }
+
+        .card-image-wrap img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+            display: block;
+        }
+
+        .menu-card:hover .card-image-wrap img {
+            transform: scale(1.08);
+        }
+
+        .card-image-wrap .card-badge {
+            position: absolute;
+            top: 1rem;
+            left: 1rem;
+            background: rgba(10, 11, 14, 0.85);
+            backdrop-filter: blur(8px);
+            border: 1px solid var(--border-gold);
+            color: var(--gold-base);
+            font-size: 0.72rem;
+            font-weight: 700;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            padding: 0.35rem 0.8rem;
+            border-radius: var(--radius-full);
+            z-index: 2;
+        }
+
+        .card-body-content {
+            padding: 1.8rem;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            flex-grow: 1;
+        }
+
+        .menu-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            margin-bottom: 1rem;
+            gap: 1rem;
+        }
+
+        .menu-title-area h3 {
+            font-family: var(--font-serif);
+            font-size: 1.4rem;
+            color: var(--text-primary);
+            margin-bottom: 0.35rem;
+        }
+
+        .menu-tags {
+            display: flex;
+            gap: 0.4rem;
+            flex-wrap: wrap;
+        }
+
+        .tag-pill {
+            font-size: 0.72rem;
+            font-weight: 700;
+            letter-spacing: 0.5px;
+            padding: 2px 8px;
+            border-radius: var(--radius-full);
+            text-transform: uppercase;
+        }
+
+        .tag-signature {
+            background: rgba(212, 175, 55, 0.15);
+            color: var(--gold-base);
+            border: 1px solid var(--border-gold);
+        }
+
+        .tag-organic {
+            background: rgba(16, 185, 129, 0.15);
+            color: var(--accent-emerald);
+            border: 1px solid rgba(16, 185, 129, 0.3);
+        }
+
+        .tag-gf {
+            background: rgba(139, 92, 246, 0.15);
+            color: #a78bfa;
+            border: 1px solid rgba(139, 92, 246, 0.3);
+        }
+
+        .menu-price {
+            font-family: var(--font-display);
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--gold-base);
+            white-space: nowrap;
+        }
+
+        .menu-desc {
+            color: var(--text-secondary);
+            font-size: 0.95rem;
+            line-height: 1.7;
+            margin-bottom: 1.5rem;
+        }
+
+        .menu-footer {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding-top: 1.25rem;
+            border-top: 1px solid var(--border-glass);
+        }
+
+        .ingredient-note {
+            font-size: 0.82rem;
+            color: var(--text-muted);
+            font-style: italic;
+        }
+
+        .quick-add-btn {
+            background: var(--bg-surface-elevated);
+            border: 1px solid var(--border-glass);
+            color: var(--gold-base);
+            padding: 0.45rem 0.9rem;
+            border-radius: var(--radius-full);
+            font-size: 0.8rem;
+            font-weight: 600;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.4rem;
+            cursor: pointer;
+            transition: var(--transition-smooth);
+        }
+
+        .quick-add-btn:hover {
+            background: var(--gold-base);
+            color: #000;
+            border-color: var(--gold-base);
+        }
+
+        .feature-split {
+            display: grid;
+            grid-template-columns: 1.1fr 0.9fr;
+            gap: 4.5rem;
+            align-items: center;
+        }
+
+        .feature-image-card {
+            border-radius: var(--radius-lg);
+            overflow: hidden;
+            box-shadow: var(--shadow-card);
+            border: 1px solid var(--border-gold);
+            position: relative;
+        }
+
+        .feature-image-card img {
+            width: 100%;
+            height: 480px;
+            object-fit: cover;
+            display: block;
+            transition: transform 0.6s ease;
+        }
+
+        .feature-image-card:hover img {
+            transform: scale(1.03);
+        }
+
+        .packages-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 2.5rem;
+            margin-top: 3.5rem;
+        }
+
+        .package-card {
+            background: var(--bg-surface);
+            border: 1px solid var(--border-glass);
+            border-radius: var(--radius-lg);
+            padding: 3rem 2.2rem;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            transition: var(--transition-smooth);
+            position: relative;
+        }
+
+        .package-card.featured {
+            border-color: var(--gold-base);
+            background: linear-gradient(180deg, rgba(212, 175, 55, 0.08) 0%, var(--bg-surface) 100%);
+            box-shadow: var(--shadow-glow);
+            transform: scale(1.03);
+        }
+
+        .package-card:hover {
+            transform: translateY(-8px) scale(1.02);
+            border-color: var(--gold-base);
+        }
+
+        .package-tier {
+            font-family: var(--font-display);
+            font-size: 0.85rem;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            color: var(--gold-base);
+            margin-bottom: 0.75rem;
+        }
+
+        .package-title {
+            font-family: var(--font-serif);
+            font-size: 1.75rem;
+            margin-bottom: 1rem;
+        }
+
+        .package-price {
+            font-family: var(--font-display);
+            font-size: 2.2rem;
+            font-weight: 800;
+            color: var(--gold-base);
+            margin-bottom: 1.5rem;
+        }
+
+        .package-price span {
+            font-size: 0.9rem;
+            color: var(--text-muted);
+            font-family: var(--font-body);
+            font-weight: 400;
+        }
+
+        .package-features {
+            list-style: none;
+            display: flex;
+            flex-direction: column;
+            gap: 0.9rem;
+            margin-bottom: 2.5rem;
+        }
+
+        .package-features li {
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+            color: var(--text-secondary);
+            font-size: 0.95rem;
+        }
+
+        .package-features li i {
+            color: var(--gold-base);
+            width: 18px;
+            height: 18px;
+            flex-shrink: 0;
+        }
+
+        .cta-box {
+            background: linear-gradient(135deg, rgba(118, 119, 122, 0.9) 0%, rgba(83, 86, 94, 0.95) 100%);
+            border: 1px solid var(--border-gold);
+            border-radius: var(--radius-lg);
+            padding: 4rem 2.5rem;
+            text-align: center;
+            box-shadow: var(--shadow-card);
+            position: relative;
+            overflow: hidden;
+        }
+
+
+
+        .cta-box::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 600px;
+            height: 300px;
+            background: radial-gradient(ellipse, rgba(237, 237, 231, 0.15) 0%, transparent 70%);
+            pointer-events: none;
+        }
+
+        .cta-box h2 {
+            font-family: var(--font-serif);
+            font-size: clamp(2rem, 4vw, 3rem);
+            margin-bottom: 1rem;
+        }
+
+        .cta-box p {
+            color: #000;
+            color: var(--text-secondary);
+            font-size: 1.1rem;
+            max-width: 650px;
+            margin: 0 auto 2.5rem;
+        }
+
+        footer {
+            background: var(--bg-surface);
+            border-top: 1px solid var(--border-glass);
+            padding: 5rem 0 2.5rem;
+            margin-top: 4rem;
+        }
+
+        .footer-grid {
+            display: grid;
+            grid-template-columns: 2fr 1fr 1fr 1.5fr;
+            gap: 3.5rem;
+            margin-bottom: 3.5rem;
+        }
+
+        .footer-title {
+            font-family: var(--font-display);
+            font-size: 1rem;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            color: var(--gold-base);
+            margin-bottom: 1.5rem;
+        }
+
+        .footer-links {
+            list-style: none;
+            display: flex;
+            flex-direction: column;
+            gap: 0.85rem;
+        }
+
+        .footer-links a {
+            color: var(--text-secondary);
+            text-decoration: none;
+            font-size: 0.95rem;
+            transition: var(--transition-smooth);
+        }
+
+        .footer-links a:hover {
+            color: var(--gold-base);
+            padding-left: 5px;
+        }
+
+        .footer-bottom {
+            padding-top: 2rem;
+            border-top: 1px solid var(--border-glass);
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            color: var(--text-muted);
+            font-size: 0.88rem;
+        }
+
+        .back-to-top {
+            position: fixed;
+            bottom: 2rem;
+            right: 2rem;
+            width: 48px;
+            height: 48px;
+            border-radius: 50%;
+            background: var(--bg-surface-elevated);
+            border: 1px solid var(--border-gold);
+            color: var(--gold-base);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            opacity: 0;
+            visibility: hidden;
+            transition: var(--transition-smooth);
+            z-index: 900;
+        }
+
+        .back-to-top.visible {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        .back-to-top:hover {
+            background: var(--gold-base);
+            color: #000;
+            transform: translateY(-3px);
+        }
+
+        .toast-msg {
+            position: fixed;
+            bottom: 2rem;
+            left: 50%;
+            transform: translateX(-50%) translateY(100px);
+            background: var(--bg-surface-elevated);
+            border: 1px solid var(--border-gold);
+            color: var(--text-primary);
+            padding: 0.9rem 1.8rem;
+            border-radius: var(--radius-full);
+            box-shadow: var(--shadow-card);
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+            z-index: 3000;
+            opacity: 0;
+            pointer-events: none;
+            transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+
+        .toast-msg.show {
+            transform: translateX(-50%) translateY(0);
+            opacity: 1;
+        }
+
+        .reveal {
+            opacity: 0;
+            transform: translateY(28px);
+            transition: opacity 0.6s ease, transform 0.6s ease;
+        }
+
+        .reveal.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        @media (max-width: 1024px) {
+            .feature-split {
+                grid-template-columns: 1fr;
+            }
+
+            .footer-grid {
+                grid-template-columns: 1fr 1fr;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .nav-toggle-btn {
+                display: flex;
+            }
+
+            .nav-actions .btn-gold {
+                display: none;
+            }
+
+            .nav-links {
+                position: fixed;
+                top: 0;
+                right: -100%;
+                width: 82%;
+                max-width: 320px;
+                height: 100vh;
+                background: var(--bg-surface);
+                flex-direction: column;
+                justify-content: center;
+                gap: 2.5rem;
+                padding: 2.5rem 2rem;
+                transition: right 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+                box-shadow: -10px 0 40px rgba(0, 0, 0, 0.4);
+                border-left: 1px solid var(--border-glass);
+                z-index: 1400;
+                list-style: none;
+            }
+
+            .nav-links.open {
+                right: 0;
+            }
+
+            .nav-links a {
+                font-size: 1rem;
+                letter-spacing: 1px;
+            }
+
+            .menu-grid {
+                grid-template-columns: 1fr;
+                gap: 1.5rem;
+            }
+
+            .packages-grid {
+                grid-template-columns: 1fr;
+                gap: 1.5rem;
+            }
+
+            .package-card.featured {
+                transform: scale(1);
+            }
+
+            .menu-filter-bar {
+                gap: 0.5rem;
+                justify-content: flex-start;
+                overflow-x: auto;
+                padding-bottom: 0.5rem;
+                flex-wrap: nowrap;
+            }
+
+            .filter-btn {
+                white-space: nowrap;
+                padding: 0.5rem 1rem;
+                font-size: 0.8rem;
+            }
+
+            .feature-split {
+                grid-template-columns: 1fr;
+                gap: 2rem;
+            }
+
+            .footer-grid {
+                grid-template-columns: 1fr;
+                gap: 2rem;
+            }
+
+            .footer-bottom {
+                flex-direction: column;
+                gap: 1rem;
+                text-align: center;
+            }
+
+            .section {
+                padding: 3.5rem 0;
+            }
+
+            .section-title {
+                font-size: clamp(1.8rem, 7vw, 2.5rem);
+            }
+
+            .page-hero-title {
+                font-size: clamp(2rem, 8vw, 3rem);
+            }
+        }
+
+        @media (max-width: 480px) {
+            html {
+                font-size: 15px;
+            }
+
+            .container {
+                padding: 0 1rem;
+            }
+
+            .section {
+                padding: 2.5rem 0;
+            }
+
+            .menu-grid {
+                grid-template-columns: 1fr;
+                gap: 1rem;
+            }
+
+            .card-body {
+                padding: 1.25rem;
+            }
+
+            .packages-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .section-tag {
+                font-size: 0.72rem;
+                padding: 0.3rem 0.8rem;
+            }
+
+            .brand-name {
+                font-size: 1rem;
+            }
+
+            .btn {
+                padding: 0.7rem 1.4rem;
+                font-size: 0.85rem;
+            }
+
+            .footer-bottom {
+                font-size: 0.8rem;
+            }
+        }
+
+        .navbar.scrolled {
+            background: var(--bg-glass);
+            box-shadow: var(--shadow-subtle);
+        }
+
+        .brand-name,
+        .section-tag,
+        .footer-title {
+            letter-spacing: .8px;
+        }
+
+        .page-hero {
+            background: radial-gradient(circle at 50% 0%, #fff1df, transparent 63%);
+        }
+
+        .page-hero-title,
+        .section-title {
+            letter-spacing: -1.2px;
+            font-weight: 750;
+        }
+
+        .gold-gradient-text {
+            background: none;
+            -webkit-text-fill-color: currentColor;
+            color: var(--gold-base);
+        }
+
+        .filter-btn {
+            text-transform: none;
+            letter-spacing: 0;
+        }
+
+        .menu-card,
+        .package-card,
+        .feature-image-card {
+            box-shadow: none;
+        }
+
+        .menu-card:hover {
+            transform: translateY(-3px);
+        }
+
+        .quick-add-btn {
+            text-transform: none;
+            letter-spacing: 0;
+        }
+
+        .btn {
+            text-transform: none;
+            letter-spacing: .3px;
+        }
+
+        .btn-gold {
+            color: #fff;
+            box-shadow: none;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="scroll-progress"></div>
+
+    <nav class="navbar" id="navbar">
+        <div class="container">
+            <div class="nav-inner">
+                <a href="webtask1.html" class="brand">
+                    <div class="brand-logo-icon">L</div>
+                    <span class="brand-name">ER Snacks &amp; Catering</span>
+                </a>
+                <ul class="nav-links">
+                    <li><a href="webtask1.html">Home</a></li>
+                    <li><a href="webmenu.html" class="active">Menu</a></li>
+                    <li><a href="webabout.html">About</a></li>
+                    <li><a href="webcon.html">Contact</a></li>
+                </ul>
+                <div class="nav-actions">
+
+                    <a href="webcon.html" class="btn btn-gold">
+                        <i data-lucide="calendar" width="16" height="16"></i>
+                        Reserve
+                    </a>
+                    <button class="nav-toggle-btn" id="navToggle" aria-label="Open menu">
+                        <i data-lucide="menu" width="24" height="24"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <div class="page-hero">
+        <div class="container reveal">
+            <span class="section-tag">
+                <i data-lucide="utensils" width="14" height="14"></i>
+                Everyday Favourites
+            </span>
+            <h1 class="page-hero-title">Food for <span class="gold-gradient-text">sharing</span></h1>
+            <p class="page-hero-desc">
+                Browse a selection of snacks and meals made for sharing, celebrations, and everyday cravings.
+            </p>
+        </div>
+    </div>
+
+    <section class="section">
+        <div class="container">
+            <div class="filter-container">
+                <button class="filter-btn active" onclick="filterMenu('all', this)">All Food</button>
+                <button class="filter-btn" onclick="filterMenu('amuse', this)">Snacks</button>
+                <button class="filter-btn" onclick="filterMenu('starter', this)">Starters</button>
+                <button class="filter-btn" onclick="filterMenu('main', this)">Meals</button>
+                <button class="filter-btn" onclick="filterMenu('dessert', this)">Desserts</button>
+                <button class="filter-btn" onclick="filterMenu('veg', this)">Vegetarian</button>
+            </div>
+
+            <div class="menu-grid" id="menuGrid">
+
+                <div class="menu-card has-image reveal" data-cat="main">
+                    <div class="card-image-wrap">
+                        <img src="../image/fishdish.jpg" alt="Pan-Seared Chilean Sea Bass">
+                        <span class="card-badge">Fresh seafood</span>
+                    </div>
+                    <div class="card-body-content">
+                        <div>
+                            <div class="menu-header">
+                                <div class="menu-title-area">
+                                    <h3>Pan-Seared Chilean Sea Bass</h3>
+                                    <div class="menu-tags">
+                                        <span class="tag-pill tag-signature">Signature</span>
+                                        <span class="tag-pill tag-gf">GF</span>
+                                    </div>
+                                </div>
+                                <span class="menu-price">$68</span>
+                            </div>
+                            <p class="menu-desc">Crispy golden skin sea bass fillet served with tender asparagus spears,
+                                saffron-infused velouté emulsion, microgreens, and crushed pink peppercorns.</p>
+                        </div>
+                        <div class="menu-footer">
+                            <span class="ingredient-note">Sea Bass · Saffron Emulsion · Asparagus</span>
+                            <button class="quick-add-btn" onclick="showToast('Chilean Sea Bass added to enquiry')">
+                                <i data-lucide="plus" width="14" height="14"></i> Enquire
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="menu-card has-image reveal" data-cat="main">
+                    <div class="card-image-wrap">
+                        <img src="../image/chiken.jpg" alt="Herb-Roasted Farm Chicken">
+                        <span class="card-badge">Family favourite</span>
+                    </div>
+                    <div class="card-body-content">
+                        <div>
+                            <div class="menu-header">
+                                <div class="menu-title-area">
+                                    <h3>Herb-Roasted Farm Chicken</h3>
+                                    <div class="menu-tags">
+                                        <span class="tag-pill tag-organic">Organic</span>
+                                        <span class="tag-pill tag-signature">Popular</span>
+                                    </div>
+                                </div>
+                                <span class="menu-price">$46</span>
+                            </div>
+                            <p class="menu-desc">Free-range chicken breast grilled to perfection over open embers,
+                                glazed with fresh thyme jus, blistered heirloom garlic, and black Périgord truffle
+                                sauce.</p>
+                        </div>
+                        <div class="menu-footer">
+                            <span class="ingredient-note">Free-Range Chicken · Thyme · Périgord Truffle</span>
+                            <button class="quick-add-btn" onclick="showToast('Herb-Roasted Chicken added to enquiry')">
+                                <i data-lucide="plus" width="14" height="14"></i> Enquire
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="menu-card has-image reveal" data-cat="main starter">
+                    <div class="card-image-wrap">
+                        <img src="../image/chicut.jpg" alt="Crispy Artisanal Chicken Schnitzel">
+                        <span class="card-badge">Artisanal Cutlet</span>
+                    </div>
+                    <div class="card-body-content">
+                        <div>
+                            <div class="menu-header">
+                                <div class="menu-title-area">
+                                    <h3>Crispy Artisanal Chicken Cutlet</h3>
+                                    <div class="menu-tags">
+                                        <span class="tag-pill tag-organic">Artisanal</span>
+                                    </div>
+                                </div>
+                                <span class="menu-price">$38</span>
+                            </div>
+                            <p class="menu-desc">Tender chicken cutlets in a golden herb panko crust, served with
+                                Italian flat-leaf parsley, Meyer lemon beurre noisette, and aged Parmesan ribbons.</p>
+                        </div>
+                        <div class="menu-footer">
+                            <span class="ingredient-note">Farm Chicken · Herb Panko · Beurre Noisette</span>
+                            <button class="quick-add-btn" onclick="showToast('Chicken Cutlet added to enquiry')">
+                                <i data-lucide="plus" width="14" height="14"></i> Enquire
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="menu-card has-image reveal" data-cat="amuse">
+                    <div class="card-image-wrap">
+                        <img src="../image/chimenu.jpg" alt="Seared Foie Gras">
+                        <span class="card-badge">Chef's Signature</span>
+                    </div>
+                    <div class="card-body-content">
+                        <div>
+                            <div class="menu-header">
+                                <div class="menu-title-area">
+                                    <h3>Seared Foie Gras</h3>
+                                    <div class="menu-tags">
+                                        <span class="tag-pill tag-signature">Signature</span>
+                                    </div>
+                                </div>
+                                <span class="menu-price">$48</span>
+                            </div>
+                            <p class="menu-desc">Pan-seared duck foie gras with Sauternes gelée, brioche toast points,
+                                and a
+                                microherb garden salad perfumed with truffle oil.</p>
+                        </div>
+                        <div class="menu-footer">
+                            <span class="ingredient-note">Duck · Foie Gras · Sauternes</span>
+                            <button class="quick-add-btn" onclick="showToast('Seared Foie Gras added to enquiry')">
+                                <i data-lucide="plus" width="14" height="14"></i> Enquire
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="menu-card has-image reveal" data-cat="starter veg">
+                    <div class="card-image-wrap">
+                        <img src="../image/tomato.jpg" alt="Burrata & Heritage Tomatoes">
+                        <span class="card-badge">Organic & Fresh</span>
+                    </div>
+                    <div class="card-body-content">
+                        <div>
+                            <div class="menu-header">
+                                <div class="menu-title-area">
+                                    <h3>Burrata & Heritage Tomatoes</h3>
+                                    <div class="menu-tags">
+                                        <span class="tag-pill tag-organic">Organic</span>
+                                        <span class="tag-pill tag-gf">GF</span>
+                                    </div>
+                                </div>
+                                <span class="menu-price">$28</span>
+                            </div>
+                            <p class="menu-desc">Hand-pulled Apulian burrata, heirloom tomatoes, aged 25-year balsamic
+                                reduction, basil oil, and toasted pine nuts.</p>
+                        </div>
+                        <div class="menu-footer">
+                            <span class="ingredient-note">Burrata · Heirloom Tomato</span>
+                            <button class="quick-add-btn" onclick="showToast('Burrata added to enquiry')">
+                                <i data-lucide="plus" width="14" height="14"></i> Enquire
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="menu-card has-image reveal" data-cat="starter">
+                    <div class="card-image-wrap">
+                        <img src="../image/scallop.jpg" alt="Hokkaido Scallop Crudo">
+                        <span class="card-badge">Raw Crudo</span>
+                    </div>
+                    <div class="card-body-content">
+                        <div>
+                            <div class="menu-header">
+                                <div class="menu-title-area">
+                                    <h3>Hokkaido Scallop Crudo</h3>
+                                    <div class="menu-tags">
+                                        <span class="tag-pill tag-signature">Signature</span>
+                                        <span class="tag-pill tag-gf">GF</span>
+                                    </div>
+                                </div>
+                                <span class="menu-price">$56</span>
+                            </div>
+                            <p class="menu-desc">Raw Hokkaido scallops with yuzu ponzu, pickled cucumber, caviar pearls,
+                                and
+                                crispy shallot garnish.</p>
+                        </div>
+                        <div class="menu-footer">
+                            <span class="ingredient-note">Scallop · Yuzu · Caviar</span>
+                            <button class="quick-add-btn" onclick="showToast('Scallop Crudo added to enquiry')">
+                                <i data-lucide="plus" width="14" height="14"></i> Enquire
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="menu-card has-image reveal" data-cat="main">
+                    <div class="card-image-wrap">
+                        <img src="../image/wagya.jpg" alt="A5 Wagyu Tenderloin">
+                        <span class="card-badge">Chef's Table</span>
+                    </div>
+                    <div class="card-body-content">
+                        <div>
+                            <div class="menu-header">
+                                <div class="menu-title-area">
+                                    <h3>A5 Wagyu Tenderloin</h3>
+                                    <div class="menu-tags">
+                                        <span class="tag-pill tag-signature">Chef's Table</span>
+                                    </div>
+                                </div>
+                                <span class="menu-price">$145</span>
+                            </div>
+                            <p class="menu-desc">Japanese A5 Wagyu, pomme purée with black truffle, braised shallots,
+                                port
+                                wine reduction, and microgreens.</p>
+                        </div>
+                        <div class="menu-footer">
+                            <span class="ingredient-note">A5 Wagyu · Black Truffle</span>
+                            <button class="quick-add-btn" onclick="showToast('Wagyu Tenderloin added to enquiry')">
+                                <i data-lucide="plus" width="14" height="14"></i> Enquire
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="menu-card has-image reveal" data-cat="main veg">
+                    <div class="card-image-wrap">
+                        <img src="../image/mushroom.jpg" alt="Wild Mushroom Risotto">
+                        <span class="card-badge">Truffle & Herb</span>
+                    </div>
+                    <div class="card-body-content">
+                        <div>
+                            <div class="menu-header">
+                                <div class="menu-title-area">
+                                    <h3>Wild Mushroom Risotto</h3>
+                                    <div class="menu-tags">
+                                        <span class="tag-pill tag-organic">Organic</span>
+                                        <span class="tag-pill tag-gf">GF</span>
+                                    </div>
+                                </div>
+                                <span class="menu-price">$52</span>
+                            </div>
+                            <p class="menu-desc">Carnaroli risotto with porcini, chanterelle, aged 36-month parmigiano
+                                reggiano, and Périgord black truffle oil.</p>
+                        </div>
+                        <div class="menu-footer">
+                            <span class="ingredient-note">Porcini · Chanterelle · Truffle</span>
+                            <button class="quick-add-btn" onclick="showToast('Mushroom Risotto added to enquiry')">
+                                <i data-lucide="plus" width="14" height="14"></i> Enquire
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="menu-card has-image reveal" data-cat="main">
+                    <div class="card-image-wrap">
+                        <img src="../image/lobster.jpg" alt="Brittany Lobster Bisque">
+                        <span class="card-badge">Warm &amp; comforting</span>
+                    </div>
+                    <div class="card-body-content">
+                        <div>
+                            <div class="menu-header">
+                                <div class="menu-title-area">
+                                    <h3>Brittany Lobster Bisque</h3>
+                                    <div class="menu-tags">
+                                        <span class="tag-pill tag-signature">Signature</span>
+                                    </div>
+                                </div>
+                                <span class="menu-price">$88</span>
+                            </div>
+                            <p class="menu-desc">Whole Brittany blue lobster, bisque velouté, cognac cream, and tarragon
+                                oil
+                                with crispy brioche.</p>
+                        </div>
+                        <div class="menu-footer">
+                            <span class="ingredient-note">Blue Lobster · Cognac · Bisque</span>
+                            <button class="quick-add-btn" onclick="showToast('Lobster Bisque added to enquiry')">
+                                <i data-lucide="plus" width="14" height="14"></i> Enquire
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="menu-card has-image reveal" data-cat="dessert veg">
+                    <div class="card-image-wrap">
+                        <img src="../image/chocolate.jpg" alt="Valrhona Chocolate Soufflé">
+                        <span class="card-badge">Sweet treat</span>
+                    </div>
+                    <div class="card-body-content">
+                        <div>
+                            <div class="menu-header">
+                                <div class="menu-title-area">
+                                    <h3>Valrhona Chocolate Soufflé</h3>
+                                    <div class="menu-tags">
+                                        <span class="tag-pill tag-signature">Signature</span>
+                                    </div>
+                                </div>
+                                <span class="menu-price">$32</span>
+                            </div>
+                            <p class="menu-desc">Warm 70% Valrhona dark chocolate soufflé, Tahitian vanilla crème
+                                anglaise,
+                                and edible 22-carat gold leaf.</p>
+                        </div>
+                        <div class="menu-footer">
+                            <span class="ingredient-note">Valrhona · Vanilla · Gold Leaf</span>
+                            <button class="quick-add-btn" onclick="showToast('Chocolate Soufflé added to enquiry')">
+                                <i data-lucide="plus" width="14" height="14"></i> Enquire
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="menu-card has-image reveal" data-cat="dessert veg">
+                    <div class="card-image-wrap">
+                        <img src="../image/vanilla.jpg" alt="Vanilla Crème Brûlée">
+                        <span class="card-badge">Classic Dessert</span>
+                    </div>
+                    <div class="card-body-content">
+                        <div>
+                            <div class="menu-header">
+                                <div class="menu-title-area">
+                                    <h3>Vanilla Crème Brûlée</h3>
+                                    <div class="menu-tags">
+                                        <span class="tag-pill tag-gf">GF</span>
+                                    </div>
+                                </div>
+                                <span class="menu-price">$22</span>
+                            </div>
+                            <p class="menu-desc">Madagascan bourbon vanilla custard, perfectly caramelized raw cane
+                                sugar,
+                                seasonal berry compote, and fresh mint.</p>
+                        </div>
+                        <div class="menu-footer">
+                            <span class="ingredient-note">Vanilla · Seasonal Berries</span>
+                            <button class="quick-add-btn" onclick="showToast('Crème Brûlée added to enquiry')">
+                                <i data-lucide="plus" width="14" height="14"></i> Enquire
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="menu-card has-image reveal" data-cat="amuse starter">
+                    <div class="card-image-wrap">
+                        <img src="../image/arancini.jpg" alt="Truffle & Brie Arancini">
+                        <span class="card-badge">Crispy Amuse</span>
+                    </div>
+                    <div class="card-body-content">
+                        <div>
+                            <div class="menu-header">
+                                <div class="menu-title-area">
+                                    <h3>Truffle & Brie Arancini</h3>
+                                    <div class="menu-tags">
+                                        <span class="tag-pill tag-organic">Organic</span>
+                                    </div>
+                                </div>
+                                <span class="menu-price">$18</span>
+                            </div>
+                            <p class="menu-desc">Crispy Arborio rice balls filled with melted Brie de Meaux and black
+                                truffle, with a saffron aioli dip.</p>
+                        </div>
+                        <div class="menu-footer">
+                            <span class="ingredient-note">Arborio · Brie · Black Truffle</span>
+                            <button class="quick-add-btn" onclick="showToast('Truffle Arancini added to enquiry')">
+                                <i data-lucide="plus" width="14" height="14"></i> Enquire
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <section class="section" style="background: var(--bg-surface);">
+        <div class="container">
+            <div class="feature-split">
+                <div class="feature-image-card reveal">
+                    <img src="../image/chicken.jpg" alt="Our culinary artisan at work" />
+                </div>
+                <div class="reveal">
+                    <span class="section-tag">
+                        <i data-lucide="leaf" width="14" height="14"></i>
+                        Seasonal Sourcing
+                    </span>
+                    <h2 class="section-title">Farm to <span class="gold-gradient-text">Table</span> Philosophy</h2>
+                    <p class="section-subtitle">
+                        We partner with over 30 artisanal farms and producers to ensure every ingredient reaches your
+                        table at peak seasonal perfection. No compromises, ever.
+                    </p>
+                    <ul style="list-style:none; display:flex; flex-direction:column; gap:1rem;">
+                        <li style="display:flex; align-items:center; gap:0.75rem; color:var(--text-secondary);">
+                            <i data-lucide="check-circle" width="20" height="20"
+                                style="color:var(--gold-base); flex-shrink:0;"></i>
+                            Daily sourced produce from certified organic farms
+                        </li>
+                        <li style="display:flex; align-items:center; gap:0.75rem; color:var(--text-secondary);">
+                            <i data-lucide="check-circle" width="20" height="20"
+                                style="color:var(--gold-base); flex-shrink:0;"></i>
+                            Sustainably caught seafood from MSC-certified suppliers
+                        </li>
+                        <li style="display:flex; align-items:center; gap:0.75rem; color:var(--text-secondary);">
+                            <i data-lucide="check-circle" width="20" height="20"
+                                style="color:var(--gold-base); flex-shrink:0;"></i>
+                            Heritage breed meats raised without antibiotics
+                        </li>
+                        <li style="display:flex; align-items:center; gap:0.75rem; color:var(--text-secondary);">
+                            <i data-lucide="check-circle" width="20" height="20"
+                                style="color:var(--gold-base); flex-shrink:0;"></i>
+                            Zero-waste kitchen philosophy — sustainable practices
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="section">
+        <div class="container">
+            <div class="cta-box reveal">
+                <h2>Need help choosing?</h2>
+                <p style="color: #000;">Tell us what you are planning. We will help you choose food that suits your
+                    guests, budget, and
+                    dietary needs.</p>
+                <div style="display:flex; gap:1rem; justify-content:center; flex-wrap:wrap;">
+                    <a href="webtask1.html#contact" class="btn btn-gold">
+                        <i data-lucide="phone" width="16" height="16"></i>
+                        Speak with Our Chef
+                    </a>
+                    <a href="webabout.html" class="btn btn-outline">
+                        <i data-lucide="info" width="16" height="16"></i>
+                        Meet Our Team
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <div class="container">
+            <div class="footer-grid">
+                <div>
+                    <p class="footer-title" style="font-size:1.3rem; letter-spacing:3px;">ER Snacks</p>
+                    <p style="color:var(--text-secondary); font-size:0.92rem; line-height:1.7;">Fresh snacks and
+                        friendly catering for family, friends, and local celebrations.</p>
+                </div>
+                <div>
+                    <p class="footer-title">Navigation</p>
+                    <ul class="footer-links">
+                        <li><a href="webtask1.html">Home</a></li>
+                        <li><a href="webmenu.html">Menu</a></li>
+                        <li><a href="webabout.html">About</a></li>
+                        <li><a href="webtask1.html#contact">Contact</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <p class="footer-title">Services</p>
+                    <ul class="footer-links">
+                        <li><a href="#">Wedding Banquets</a></li>
+                        <li><a href="#">Office Lunches</a></li>
+                        <li><a href="#">Private Dinners</a></li>
+                        <li><a href="#">Cocktail Receptions</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <p class="footer-title">Contact</p>
+                    <ul class="footer-links">
+                        <li><a href="#">KanniyaKumari TamilNadu India</a></li>
+                        <li><a href="tel:+15551234567">+91 9876543210</a></li>
+                        <li><a href="mailto:hello@ersnacks.com">hello@ersnacks.com</a></li>
+                        <li><a href="#">Mon-Sat: 9am-8pm</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2026 ER Catering. All rights reserved.</p>
+                <p>Crafted with passion for culinary excellence.</p>
+            </div>
+        </div>
+    </footer>
+
+    <button class="back-to-top" id="backToTop" onclick="window.scrollTo({top:0,behavior:'smooth'})">
+        <i data-lucide="chevron-up" width="20" height="20"></i>
+    </button>
+
+    <div class="toast-msg" id="toastMsg">
+        <i data-lucide="check-circle" width="18" height="18" style="color:var(--gold-base)"></i>
+        <span id="toastText"></span>
+    </div>
+
+    <script>
+        lucide.createIcons();
+
+        window.addEventListener('scroll', function () {
+            var scrollTop = window.scrollY;
+            var docHeight = document.body.scrollHeight - window.innerHeight;
+            document.getElementById('scroll-progress').style.width = ((scrollTop / docHeight) * 100) + '%';
+
+            var navbar = document.getElementById('navbar');
+            if (scrollTop > 50) navbar.classList.add('scrolled');
+            else navbar.classList.remove('scrolled');
+
+            var backToTop = document.getElementById('backToTop');
+            if (scrollTop > 400) backToTop.classList.add('visible');
+            else backToTop.classList.remove('visible');
+
+            document.querySelectorAll('.reveal').forEach(function (el) {
+                if (el.getBoundingClientRect().top < window.innerHeight - 80) el.classList.add('visible');
+            });
+        });
+
+        window.dispatchEvent(new Event('scroll'));
+
+        localStorage.removeItem('luxury-theme');
+        document.documentElement.setAttribute('data-theme', 'light');
+
+        const navToggle = document.getElementById('navToggle');
+        const navLinks = document.getElementById('navLinks');
+
+        if (navToggle && navLinks) {
+            navToggle.addEventListener('click', () => {
+                navLinks.classList.toggle('open');
+            });
+
+            navLinks.querySelectorAll('a').forEach(link => {
+                link.addEventListener('click', () => {
+                    navLinks.classList.remove('open');
+                });
+            });
+
+            // Close drawer when clicking outside
+            document.addEventListener('click', (e) => {
+                if (!navLinks.contains(e.target) && !navToggle.contains(e.target)) {
+                    navLinks.classList.remove('open');
+                }
+            });
+        }
+
+        function filterMenu(cat, btn) {
+            document.querySelectorAll('.filter-btn').forEach(function (b) { b.classList.remove('active'); });
+            btn.classList.add('active');
+            document.querySelectorAll('.menu-card').forEach(function (card) {
+                var cats = card.getAttribute('data-cat') || '';
+                card.style.display = (cat === 'all' || cats.indexOf(cat) !== -1) ? 'flex' : 'none';
+            });
+        }
+
+        function showToast(msg) {
+            var toast = document.getElementById('toastMsg');
+            document.getElementById('toastText').textContent = msg;
+            toast.classList.add('show');
+            setTimeout(function () { toast.classList.remove('show'); }, 3000);
+        }
+    </script>
+</body>
+
+</html>
