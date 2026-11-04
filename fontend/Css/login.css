@@ -1,0 +1,170 @@
+* {
+	box-sizing: border-box;
+}
+
+body {
+	margin: 0;
+	font-family: Arial, sans-serif;
+	color: #222;
+	background: #f2f4f7;
+}
+
+.login-page {
+	min-height: 100vh;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	padding: 24px;
+}
+
+.login-card {
+	width: min(100%, 420px);
+	padding: 36px;
+	background: #fff;
+	border: 1px solid #dfe3e8;
+	border-radius: 8px;
+	box-shadow: 0 8px 24px rgba(31, 41, 55, 0.08);
+}
+
+.logo-link {
+	display: inline-block;
+	margin-bottom: 28px;
+	color: #c2410c;
+	font-size: 20px;
+	font-weight: 700;
+	text-decoration: none;
+}
+
+h1 {
+	margin: 0 0 8px;
+	font-size: 28px;
+}
+
+.form-subtitle {
+	margin: 0 0 28px;
+	color: #667085;
+	line-height: 1.5;
+}
+
+.field-group {
+	margin-bottom: 20px;
+}
+
+.field-label-row {
+	display: flex;
+	justify-content: space-between;
+	gap: 12px;
+}
+
+.field-label {
+	display: block;
+	margin-bottom: 8px;
+	font-size: 14px;
+	font-weight: 600;
+}
+
+.field-input {
+	width: 100%;
+	min-height: 44px;
+	padding: 10px 12px;
+	border: 1px solid #cbd2d9;
+	border-radius: 5px;
+	color: #222;
+	font: inherit;
+}
+
+.field-input:focus {
+	outline: 2px solid #f4a261;
+	outline-offset: 1px;
+	border-color: #c2410c;
+}
+
+.password-wrap {
+	position: relative;
+}
+
+.password-wrap .field-input {
+	padding-right: 64px;
+}
+
+.field-toggle {
+	position: absolute;
+	top: 50%;
+	right: 10px;
+	transform: translateY(-50%);
+	padding: 4px;
+	border: 0;
+	background: transparent;
+	color: #c2410c;
+	cursor: pointer;
+	font-weight: 600;
+}
+
+.field-forgot,
+.form-footer a {
+	color: #c2410c;
+	font-size: 14px;
+}
+
+.field-error {
+	display: block;
+	min-height: 18px;
+	margin-top: 5px;
+	color: #b42318;
+	font-size: 13px;
+}
+
+.checkbox-label {
+	display: flex;
+	align-items: center;
+	gap: 8px;
+	margin: 2px 0 24px;
+	color: #475467;
+	font-size: 14px;
+}
+
+.checkbox-input {
+	width: 16px;
+	height: 16px;
+	accent-color: #c2410c;
+}
+
+.btn-submit {
+	width: 100%;
+	min-height: 44px;
+	border: 0;
+	border-radius: 5px;
+	background: #c2410c;
+	color: #fff;
+	cursor: pointer;
+	font: inherit;
+	font-weight: 700;
+}
+
+.btn-submit:hover {
+	background: #9a3412;
+}
+
+.login-message {
+	min-height: 20px;
+	margin: 14px 0 0;
+	text-align: center;
+	font-size: 14px;
+}
+
+.form-footer {
+	margin: 26px 0 0;
+	color: #667085;
+	text-align: center;
+	font-size: 14px;
+}
+
+@media (max-width: 480px) {
+	.login-page {
+		padding: 16px;
+	}
+
+	.login-card {
+		padding: 28px 22px;
+	}
+}
